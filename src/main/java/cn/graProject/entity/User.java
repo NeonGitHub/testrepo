@@ -2,51 +2,51 @@ package cn.graProject.entity;
 
 public class User {
 
-	private String user_id;
+	private String userId;
 	
-	private String user_pwd;
+	private String userPwd;
 	
-	private String user_dev;
+	private String userDev;
 	
-	private String user_email;
+	private String userEmail;
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getUser_pwd() {
-		return user_pwd;
+	public String getUserPwd() {
+		return userPwd;
 	}
 
-	public void setUser_pwd(String user_pwd) {
-		this.user_pwd = user_pwd;
+	public void setUserPwd(String userPwd) {
+		this.userPwd = userPwd;
 	}
 
-	public String getUser_dev() {
-		return user_dev;
+	public String getUserDev() {
+		return userDev;
 	}
 
-	public void setUser_dev(String user_dev) {
-		this.user_dev = user_dev;
+	public void setUserDev(String userDev) {
+		this.userDev = userDev;
 	}
 
-	public String getUser_email() {
-		return user_email;
+	public String getUserEmail() {
+		return userEmail;
 	}
 
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", user_pwd=" + user_pwd + ", user_dev=" + user_dev + ", user_email="
-				+ user_email + "]";
+		return "User [userId=" + userId + ", userPwd=" + userPwd + ", userDev=" + userDev + ", userEmail=" + userEmail
+				+ "]";
 	}
-
+	
 	
 }

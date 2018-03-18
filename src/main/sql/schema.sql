@@ -15,15 +15,17 @@ PRIMARY KEY (user_id),
 key idx_dev(user_dev)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
-CREATE TABLE device(
+CREATE TABLE device_data(
+`data_id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '数据记录自增主键',
 `dev_id` varchar(120) NOT NULL COMMENT '设备号',
 `ph_data` double NOT NULL COMMENT 'PH值',
 `tds_data` double NOT NULL COMMENT 'TDS值',
 `temp_data` double NOT NULL COMMENT '温度值',
 `upload_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '传入时间',
-PRIMARY KEY (dev_id),
+PRIMARY KEY (data_id),
 key idx_dev(dev_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='监控数据表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='设备表';
+
 
 CREATE TABLE fish_case(
 `case_id` int NOT NULL COMMENT '案例编号',
