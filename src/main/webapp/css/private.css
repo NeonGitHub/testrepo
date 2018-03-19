@@ -1,0 +1,15 @@
+.userInfoDiv{
+	padding-top:8px
+}
+.userHeadDiv{
+	height: 205px;width: 265px;text-align: center;
+}
+.userHeadDiv img{
+	width: 100px;height: 100px;
+}
+.discuss{
+	margin-bottom: 20px;
+}
+.myAlabel{
+	color:#333333;
+}

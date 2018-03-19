@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import cn.graProject.entity.Device;
 import cn.graProject.entity.User;
 import cn.graProject.service.LoginService;
 
@@ -19,12 +20,20 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 
-	@RequestMapping("/")
-	public String Login(User user, Model model) {
-
-		if (loginService.loginCompare(user.getUserId(), user.getUserPwd())) {
-			model.addAttribute("user", loginService.findUser(user.getUserId()));
-			return "userhome";
+	@RequestMapping("/join")
+	public String userSingIn(){
+		return "signIn";
+	}
+	
+	@RequestMapping("/signin")
+	public String userLogin(User user, Model model) {
+		if (loginService.loginCompare(user.getUserEmail(), user.getUserPwd())) {
+			User deviceuser= loginService.findUser(user.getUserEmail());
+			Device device=loginService.findDevice(deviceuser.getUserDev());
+			
+			model.addAttribute("device",device);
+			model.addAttribute("user",deviceuser);
+			return "personal";
 		} else {
 			return "error";
 		}

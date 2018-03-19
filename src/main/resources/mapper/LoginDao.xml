@@ -3,11 +3,13 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.graProject.dao.LoginDao">
-	<select id="queryUserById" resultType="User" parameterType="String">
-		select * from user_info where user_id=#{userId}
+	<select id="queryUserByEmail" resultType="User" parameterType="String">
+		select * from user_info where user_email=#{userEmail}
 	</select>
 
-
+	<select id="queryDataById" resultType="Device" parameterType="String">
+		select * from device_data where device_id=#{deviceId} order by data_id desc limit 1
+	</select>
 
 
 </mapper>

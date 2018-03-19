@@ -17,18 +17,18 @@ key idx_dev(user_dev)
 
 CREATE TABLE device_data(
 `data_id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '数据记录自增主键',
-`dev_id` varchar(120) NOT NULL COMMENT '设备号',
+`device_id` varchar(120) NOT NULL COMMENT '设备号',
 `ph_data` double NOT NULL COMMENT 'PH值',
 `tds_data` double NOT NULL COMMENT 'TDS值',
 `temp_data` double NOT NULL COMMENT '温度值',
 `upload_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '传入时间',
 PRIMARY KEY (data_id),
-key idx_dev(dev_id)
+key idx_dev(device_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='设备表';
 
 
 CREATE TABLE fish_case(
-`case_id` int NOT NULL COMMENT '案例编号',
+`case_id` int NOT NULL AUTO_INCREMENT COMMENT '案例编号',
 `fish_name` varchar(120) NOT NULL COMMENT '鱼的种类',
 `ph_min` double NOT NULL COMMENT '适应的最小的ph值',
 `ph_max` double NOT NULL COMMENT '适应的最大的ph值',
@@ -37,3 +37,7 @@ CREATE TABLE fish_case(
 `details` varchar(255) COMMENT '解决方案',
 PRIMARY KEY (case_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='鱼类案例表';
+
+--插入数据
+insert into device_data(device_id,ph_data,tds_data,temp_data)
+values("0001",8.00,1.23,21.5);
