@@ -41,5 +41,3 @@ PRIMARY KEY (case_id)
 --插入数据
 insert into device_data(device_id,ph_data,tds_data,temp_data)
 values("0001",8.00,1.23,21.5);
-insert into user_info(user_id,user_pwd,user_dev,user_email)
-values("admin","123456","0001","zhang@qq.com");
