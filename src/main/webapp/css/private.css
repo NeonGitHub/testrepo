@@ -13,3 +13,18 @@
 .myAlabel{
 	color:#333333;
 }
+.myBselect{
+	color:#333333;
+	font-family: "微软雅黑";
+	font-size: 18px;
+
+}
+.myAselect{
+	width: 220px;
+	
+}
+.myAtreat{
+	color:#333333;
+	font-family: "微软雅黑";
+	font-size: 18px;
+}

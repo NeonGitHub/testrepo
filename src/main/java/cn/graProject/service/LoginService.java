@@ -36,8 +36,5 @@ public class LoginService {
 		return loginDao.queryUserByEmail(userEmail);
 	}
 	
-	public Device findDevice(String deviceId) {
-		return loginDao.queryDataById(deviceId);
-	}
 	
 }

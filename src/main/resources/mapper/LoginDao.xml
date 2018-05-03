@@ -7,9 +7,6 @@
 		select * from user_info where user_email=#{userEmail}
 	</select>
 
-	<select id="queryDataById" resultType="Device" parameterType="String">
-		select * from device_data where device_id=#{deviceId} order by data_id desc limit 1
-	</select>
 
 
 </mapper>
