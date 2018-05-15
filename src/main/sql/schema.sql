@@ -26,7 +26,7 @@ PRIMARY KEY (data_id),
 key idx_dev(device_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='设备表';
 
-CREATE TABLE disease_case(
+CREATE TABLE disease_desc(
 `disease_id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '数据记录自增主键',
 `disease_name` varchar(10) NOT NULL COMMENT '疾病名称',
 `character_a` varchar(4) COMMENT '体表特征值',
@@ -75,15 +75,30 @@ key idx_weight(weight_id)
 CREATE TABLE treatment_case(
 `case_id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '数据记录自增主键',
 `case_author` varchar(20) NOT NULL COMMENT '添加案例的用户',
-`fish_id`  int UNSIGNED NOT NULL COMMENT '诊断对象id',
+`fish_name`  varchar(20) NOT NULL COMMENT '诊断对象id',
 `ph_data` double NOT NULL COMMENT 'PH值',
 `tds_data` double NOT NULL COMMENT 'TDS值',
 `temp_data` double NOT NULL COMMENT '温度值',
 `disease_id` int UNSIGNED NOT NULL COMMENT '疾病id',
+`disease_name` varchar(10) NOT NULL COMMENT '疾病名称',
 `treatment` varchar(255) NOT NULL COMMENT '治疗方法',
 PRIMARY KEY (case_id),
 key idx_case(case_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='治疗方案表';
+
+CREATE TABLE treatment_check(
+`case_id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '数据记录自增主键',
+`case_author` varchar(20) NOT NULL COMMENT '添加案例的用户',
+`fish_name`  varchar(20) NOT NULL COMMENT '诊断对象id',
+`ph_data` double NOT NULL COMMENT 'PH值',
+`tds_data` double NOT NULL COMMENT 'TDS值',
+`temp_data` double NOT NULL COMMENT '温度值',
+`disease_id` int UNSIGNED NOT NULL COMMENT '疾病id',
+`disease_name` varchar(10) NOT NULL COMMENT '疾病名称',
+`treatment` varchar(255) NOT NULL COMMENT '治疗方法',
+PRIMARY KEY (case_id),
+key idx_case(case_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='待审核治疗方案表';
 
 CREATE TABLE fish_type(
 `fish_id`  int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '诊断对象id',
@@ -92,8 +107,8 @@ PRIMARY KEY (fish_id),
 key idx_type(fish_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='鱼种表';
 
-CREATE TABLE disease_desc(
-`disease_id` int UNSIGNED NOT NULL COMMENT '疾病id',
+CREATE TABLE disease_case(
+`disease_id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '疾病id',
 `disease_name` varchar(10) NOT NULL COMMENT '疾病名称',
 `disease_show` varchar(120) NOT NULL COMMENT '疾病表现描述',
 `disease_reason` varchar(120) NOT NULL COMMENT '疾病原因',
@@ -111,13 +126,13 @@ PRIMARY KEY (behave_id),
 key idx_behave(behave_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='行为量化表';
 
---插入数据
+--插入模拟传感器的数据
 insert into device_data(device_id,ph_data,tds_data,temp_data)
 values("0001",8.00,1.23,21.5);
-
+--插入用户数据
 insert into user_info(user_id,user_pwd,user_dev,user_email)
 values("admin01","123456","0001","123456@qq.com");
-
+--插入行为数据
 insert into behave(behave_id,behave_desc,behave_part,behave_value) values("A01","体色发黑","体表",100),("A02","体色苍白","体表",101),("A03","背鳍或臀鳍至尾鳍的体色呈白色","体表",102),("A04","鱼体局部、全部出血发炎明显","体表",103),("A05","鱼体两侧出血或充血","体表",104);
 insert into behave(behave_id,behave_desc,behave_part,behave_value) values("B01","头部乌黑","头部",100),("B02","头部充血","头部",101),("B03","口腔充血","头部",102),("B04","唇肿胀、口腔溃烂","头部",103),("B05","口部溃烂、粘液分泌","头部",104);
 insert into behave(behave_id,behave_desc,behave_part,behave_value) values("C01","鳃盖开天窗","腮部",100),("C02","鳃盖张开","腮部",101),("C03","鳃盖出血","腮部",102),("C04","鰓丝粘液多","腮部",103),("C05","鰓丝腐烂","腮部",104);
@@ -126,8 +141,20 @@ insert into behave(behave_id,behave_desc,behave_part,behave_value) values("E01",
 insert into behave(behave_id,behave_desc,behave_part,behave_value) values("F01","蛀鳍","鱼鳍",100),("F02","鳍基出血","鱼鳍",101),("F03","鱼鳍上有胞囊","鱼鳍",102),("F04","鱼鳍上有白色小点状胞囊","鱼鳍",103),("F05","鳍条有许多黑色小结节","鱼鳍",104);
 insert into behave(behave_id,behave_desc,behave_part,behave_value) values("G01","肌肉充血呈红色","肌肉",100),("G02","肌肉出血呈暗红色","肌肉",101),("G03","肌肉点状或块状出血","肌肉",102),("G04","肌肉腐烂形成小坑甚至露出骨骼和内脏","肌肉",103);
 insert into behave(behave_id,behave_desc,behave_part,behave_value) values("H01","肠道充血不腐烂","肠道",100),("H02","肠道充血发炎","肠道",101),("H03","肠道糜烂","肠道",102),("H04","肠道无食、充满积液","肠道",103),("H05","前肠粗大肠壁呈白色糜烂状","肠道",104);
-
-
-insert into user_info(user_id,user_pwd,user_dev,user_email)
-values("admin","123456","0001","zhang@qq.com");
-
+--插入鱼种数据
+insert into fish_type(fish_name)
+values("金鱼"),("银龙鱼"),("鹦鹉鱼"),("锦鲤"),("印尼虎鱼"),("孔雀鱼");
+--插入治愈案例
+insert into treatment_case(case_author,fish_name,ph_data,tds_data,temp_data,disease_id,disease_name,treatment)
+values("老张","金鱼",7.01,1.44,21,1,"白头白嘴病","多喝热水，多喝热水，多喝热水"),
+("老张","银龙鱼",7.02,2.44,21,2,"白头白嘴病2","多喝热水，多喝热水，多喝热水"),
+("老张","鹦鹉鱼",7.03,3.44,21,3,"白头白嘴病3","多喝热水，多喝热水，多喝热水"),
+("老张","锦鲤",7.04,4.44,21,4,"白头白嘴病4","多喝热水，多喝热水，多喝热水"),
+("老张","孔雀鱼",7.05,5.44,21,5,"白头白嘴病5","多喝热水，多喝热水，多喝热水");
+--插入疾病案例
+insert into disease_case(disease_name,disease_show,disease_reason)
+values("白头白嘴病","头部嘴部发白","熬夜太多，不爱运动。"),
+("白头白嘴病2","头部嘴部发白2","熬夜太多，不爱运动。"),
+("白头白嘴病3","头部嘴部发白3","熬夜太多，不爱运动。"),
+("白头白嘴病4","头部嘴部发白4","熬夜太多，不爱运动。"),
+("白头白嘴病5","头部嘴部发白5","熬夜太多，不爱运动。");

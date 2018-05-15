@@ -18,5 +18,10 @@
 		select * from device_data where device_id=#{deviceId}
 	</select>
 
+	<select id="findDataByPage" resultType="Device">
+		select * from device_data
+		where device_id=#{deviceId} limit #{offset},#{limit}
+	</select>
+
 </mapper>
     

@@ -39,7 +39,7 @@
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#">首页</a></li>
-				<li><a href="signin.html">个人主页</a></li>
+				<li><a href="join">个人主页</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">案例功能 <span class="caret"></span></a>

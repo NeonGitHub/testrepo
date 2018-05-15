@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.graProject.dao.LoginDao;
-import cn.graProject.entity.Device;
 import cn.graProject.entity.User;
 
 @Service

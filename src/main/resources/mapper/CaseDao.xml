@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.graProject.dao.CaseDao">
+
+	<select id="findAllFishType" resultType="Fish">
+		select * from fish_type
+	</select>
+
+	<select id="findAllBehave" resultType="Behave">
+		select * from behave
+	</select>
+
+	<select id="findTreatmentCase" resultType="TreatmentCase">
+		select * from
+		treatment_case limit #{offset},#{limit}
+	</select>
+
+	<select id="findTreatmentCaseInfoById" resultType="TreatmentCase">
+		select * from
+		treatment_case where case_id=#{caseId}
+	</select>
+
+	<select id="findDiseaseCaseInfoById" resultType="DiseaseCase">
+		select * from
+		disease_case where disease_id=#{diseaseId}
+	</select>
+
+	<select id="findAllDiseaseCase" resultType="DiseaseCase">
+		select * from
+		disease_case
+	</select>
+	
+	<insert id="addTreatmentCheck" parameterType="cn.graProject.entity.TreatmentCheck">
+	insert into treatment_check(case_author,fish_name,ph_data,tds_data,temp_data,disease_id,disease_name,treatment) 
+	values(#{caseAuthor},#{fishName},#{phData},#{tdsData},#{tempData},#{diseaseId},#{diseaseName},#{treatment})
+	</insert>
+
+</mapper>
+    

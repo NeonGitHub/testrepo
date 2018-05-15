@@ -2,6 +2,8 @@ package cn.graProject.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import cn.graProject.entity.Device;
 
 public interface DataDao {
@@ -20,10 +22,19 @@ public interface DataDao {
 	Device queryNewDataById(String deviceId) ;
 	
 	/**
-	 * 查询历史全部数据，根据设备ID查询，返回设备列表
+	 * 查询历史全部数据，根据设备ID查询，返回设备数据列表
 	 * @param deviceId
 	 * @return
 	 */
 	List<Device> queryAllDataById(String deviceId);
+
+	/**
+	 * 根据页码/设备ID查询历史全部数据，返回设备数据列表
+	 * @param userDev
+	 * @param page1
+	 * @param pageSize
+	 * @return
+	 */
+	List<Device> findDataByPage(@Param("deviceId") String deivceId,@Param("offset") int offset,@Param("limit") int limit);
 
 }

@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@include file="common/tag.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="../common/tag.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -13,7 +12,7 @@
 <meta name="author" content="">
 <link rel="icon" href="/graProject/img/icon2.jpg">
 
-<title>智能水族箱-个人主页</title>
+<title>智能水族箱-管理员主页</title>
 
 <link href="/graProject/css/private.css" rel="stylesheet">
 <!-- Bootstrap core CSS -->
@@ -21,8 +20,7 @@
 <!-- Bootstrap theme -->
 <link href="/graProject/css/bootstrap-theme.min.css" rel="stylesheet">
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<link href="../../assets/css/ie10-viewport-bug-workaround.css"
-	rel="stylesheet">
+<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="/graProject/css/offcanvas.css" rel="stylesheet">
@@ -51,28 +49,29 @@
 	<nav class="navbar navbar-fixed-top navbar-inverse">
 	<div class="container">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+				data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#">智能水族箱</a>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="#">首页</a></li>
-				<li class="active"><a href="#">个人主页</a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">案例功能 <span class="caret"></span></a>
+				<li><a href="home.html">首页</a></li>
+				<li class="active"><a href="/graProject/admin/home">管理员主页</a></li>
+				<li><a href="/graProject/admin/addDisease">添加疾病种类</a></li>
+				<li><a href="/graProject/admin/addCase">添加生物种类</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">
+						管理案例 <span class="caret"></span>
+					</a>
 					<ul class="dropdown-menu">
-						<li><a href="/graProject/caseList?page=1&pageSize=10">查看案例</a></li>
-						<li><a href="/graProject/caseAnalysis">案例分析</a></li>
-						<li><a href="/graProject/addCase">添加案例</a></li>
+						<li><a href="/graProject/admin/caseList?page=1&pageSize=10">查看治愈案例</a></li>
+						<li><a href="/graProject/admin/addCase">添加治愈案例</a></li>
+						<li><a href="/graProject/admin/addCase">审核治愈案例</a></li>
 					</ul></li>
-				<li><a href="/graProject/newsList">社交资讯</a></li>
+				<li><a href="/graProject/admin/newslist.html">资讯管理</a></li>
 			</ul>
 		</div>
 		<!-- /.nav-collapse -->
@@ -85,53 +84,45 @@
 		<div class="row row-offcanvas row-offcanvas-right">
 
 			<div class="col-xs-12 col-sm-9">
-				<p class="pull-right visible-xs">
-					<button type="button" class="btn btn-primary btn-xs"
-						data-toggle="offcanvas">Toggle nav</button>
-				</p>
-				<div style="width: 100%; height: 300px;" id="main">
-				<script src="/graProject/js/history.js"></script>
-				</div>
+				<h3>用户列表：</h3>
 
-				<h3>数据上传时间：${device.uploadTime}</h3>
-				<div class="row">
-					<div class="col-xs-6 col-lg-4">
-						<h2>PH值</h2>
-						<p>您的水族箱当前PH值为：
-						<h4 style="color: red;">${device.phData}</h4>
-						</p>
-						<p>氢离子浓度指数（hydrogen ion concentration）是指溶液中氢离子的总数和总物质的量的比。</p>
-						<p>
-							<a class="btn btn-default" href="#" role="button">View
-								details &raquo;</a>
-						</p>
+				<div class="row" style="padding: 15px">
+
+					<table class="table">
+						<tr>
+							<th>数据编号</th>
+							<th>用户ID</th>
+							<th>密码</th>
+							<th>邮箱</th>
+							<th>关联设别ID</th>
+						</tr>
+						<tr>
+							<td>数据编号</td>
+							<td>用户ID</td>
+							<td>密码</td>
+							<td>邮箱</td>
+							<td>关联设别ID</td>
+						</tr>
+					</table>
+
+					<div class="col-md-4 col-md-offset-4">
+						<nav aria-label="Page navigation">
+						<ul class="pagination">
+							<li><a href="/graProject/caseList?page=1&pageSize=${pageSize}" aria-label="First">
+									<span aria-hidden="true">&laquo;</span>
+								</a></li>
+							<c:forEach var="i" begin="1" end="${totalPage}">
+								<li><a href="/graProject/caseList?page=${i}&pageSize=${pageSize}">
+										<c:out value="${i}" />
+									</a></li>
+							</c:forEach>
+							<li><a href="/graProject/caseList?page=${totalPage}&pageSize=${pageSize}"
+									aria-label="Last">
+									<span aria-hidden="true">&raquo;</span>
+								</a></li>
+						</ul>
+						</nav>
 					</div>
-					<!--/.col-xs-6.col-lg-4-->
-					<div class="col-xs-6 col-lg-4">
-						<h2>TDS值</h2>
-						<p>您的水族箱当前TDS值为：
-						<h4 style="color: red;">${device.tdsData}mg/L</h4>
-						</p>
-						<p>总溶解固体（Total dissolved
-							solids）,测量单位为毫克/升（mg/L）,它表明1升水中溶有多少毫克溶解性固体。</p>
-						<p>
-							<a class="btn btn-default" href="#" role="button">View
-								details &raquo;</a>
-						</p>
-					</div>
-					<!--/.col-xs-6.col-lg-4-->
-					<div class="col-xs-6 col-lg-4">
-						<h2>温度</h2>
-						<p>您的水族箱当前温度为：
-						<h4 style="color: red;">${device.tempData}°C</h4>
-						</p>
-						<p>水中的鱼儿依靠皮肤感觉器感觉环境温度的变动，保持恒定水温对水族箱来说至关重要。</p>
-						<p>
-							<a class="btn btn-default" href="#" role="button">View
-								details &raquo;</a>
-						</p>
-					</div>
-					<!--/.col-xs-6.col-lg-4-->
 
 				</div>
 				<!--/row-->
@@ -141,8 +132,7 @@
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
 				<!--小屏幕下是隐藏此部分的-->
 				<div class="userHeadDiv">
-					<img class="img-circle img-thumbnail "
-						src="/graProject/img/headpic.JPG" />
+					<img class="img-circle img-thumbnail " src="/graProject/img/headpic.JPG" />
 					<div class="userInfoDiv">
 						<!--用户ID-->
 
@@ -154,11 +144,19 @@
 					</div>
 				</div>
 				<div class="list-group">
-					<a href="#" class="list-group-item active text-center">个人主页</a>
-					<a href="/graProject/historyList?page=1&pageSize=30" class="list-group-item text-center">历史数据</a>
+					<a href="#" class="list-group-item active text-center">管理用户主页</a>
 					<a href="/graProject/caseList?page=1&pageSize=10" class="list-group-item text-center">查看案例</a>
-					<a href="/graProject/caseAnalysis" class="list-group-item text-center">案例分析</a>
-					<a href="/graProject/caseAdd" class="list-group-item text-center">添加案例</a>
+					<a href="/graProject/admin/Disease" class="list-group-item text-center">管理疾病种类</a>
+					<a href="/graProject/admin/Case" class="list-group-item text-center">管理生物种类</a>
+					<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">
+						管理案例 <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" style="width: 100%">
+						<li class="text-center"><a href="/graProject/admin/caseList?page=1&pageSize=10">查看治愈案例</a></li>
+						<li class="text-center"><a href="/graProject/admin/addCase">添加治愈案例</a></li>
+						<li class="text-center"><a href="/graProject/admin/addCase">审核治愈案例</a></li>
+					</ul>
 
 				</div>
 			</div>

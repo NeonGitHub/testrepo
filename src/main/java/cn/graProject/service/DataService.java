@@ -18,6 +18,7 @@ public class DataService {
 	
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	private DataDao dataDao;
 	
@@ -53,6 +54,11 @@ public class DataService {
 		map.put("temp", temp);
 		map.put("date", date);
 		return map;
+	}
+
+	public List<Device> findDataByPage(String userDev, int page, int pageSize) {
+		int page1=(page-1)*pageSize;
+		return dataDao.findDataByPage(userDev,page1,pageSize);
 	}
 
 }
