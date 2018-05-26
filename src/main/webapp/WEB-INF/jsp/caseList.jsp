@@ -66,7 +66,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="newslist">社交资讯</a>
+						<a href="newslist">通知及资讯</a>
 					</li>
 				</ul>
 			</div>

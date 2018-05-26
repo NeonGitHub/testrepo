@@ -60,7 +60,7 @@
 						<li><a href="/graProject/caseAnalysis">案例分析</a></li>
 						<li><a href="/graProject/caseAdd">添加案例</a></li>
 					</ul></li>
-				<li><a href="/graProject/newslist">社交资讯</a></li>
+				<li><a href="/graProject/newslist">通知及资讯</a></li>
 			</ul>
 		</div>
 		<!-- /.nav-collapse -->

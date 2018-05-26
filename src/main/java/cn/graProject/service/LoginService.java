@@ -12,28 +12,32 @@ import cn.graProject.entity.User;
 public class LoginService {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	@Autowired
 	private LoginDao loginDao;
-	
-	
-	public boolean loginCompare(String userEmail,String userPwd) {
-		if(userEmail==null||userPwd==null) {
-			return false;
-		}
-		User user=loginDao.queryUserByEmail(userEmail);
 
-		if(userPwd.equals(user.getUserPwd()) ) {
-			return true;
-		}else {
-			return false;
+	public int loginCompare(String userEmail, String userPwd) {
+		if (userEmail == null || userPwd == null) {
+			return -1;
 		}
-		
+		User user = loginDao.queryUserByEmail(userEmail);
+
+		if (userPwd.equals(user.getUserPwd()) && user.getUserPermission() == 0) {
+			return 0;
+		}
+		if (userPwd.equals(user.getUserPwd()) && user.getUserPermission() == 1) {
+			return 1;
+		}
+		return -1;
 	}
-	
+
 	public User findUser(String userEmail) {
 		return loginDao.queryUserByEmail(userEmail);
 	}
-	
-	
+
+	public void userRegister(User user) {
+		loginDao.userRegister(user);
+		
+	}
+
 }

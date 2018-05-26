@@ -39,4 +39,53 @@ public class PageService {
 		}
 		return totalPage;
 	}
+	
+	public int getUserTotalPage(int pageSize) {
+		int totalPage = 0;
+		int total = 0;
+		total = pageDao.getUserTotalPage();
+		if (total % pageSize == 0) {
+			totalPage = total / pageSize;
+		} else {
+			totalPage = total / pageSize + 1;
+		}
+		return totalPage;
+	}
+	
+	public int getDiseaseTotalPage(int pageSize) {
+		int totalPage = 0;
+		int total = 0;
+		total = pageDao.getDiseaseTotalPage();
+		if (total % pageSize == 0) {
+			totalPage = total / pageSize;
+		} else {
+			totalPage = total / pageSize + 1;
+		}
+		return totalPage;
+	}
+	
+	public int getFishTotalPage(int pageSize) {
+		int totalPage = 0;
+		int total = 0;
+		total = pageDao.getFishTotalPage();
+		if (total % pageSize == 0) {
+			totalPage = total / pageSize;
+		} else {
+			totalPage = total / pageSize + 1;
+		}
+		return totalPage;
+	}
+	
+	public int getCheckCaseTotalPage(int pageSize) {
+		int totalPage = 0;
+		int total = 0;
+		total = pageDao.getCheckCaseTotalPage();
+		if (total % pageSize == 0) {
+			totalPage = total / pageSize;
+		} else {
+			totalPage = total / pageSize + 1;
+		}
+		return totalPage;
+	}
+
 }

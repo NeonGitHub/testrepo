@@ -11,6 +11,8 @@ CREATE TABLE user_info(
 `user_pwd` varchar(20) NOT NULL COMMENT '密码',
 `user_dev` varchar(20) NOT NULL COMMENT '设备号',
 `user_email` varchar(20) NOT NULL COMMENT '邮箱',
+`user_picture` varchar(120) COMMENT '头像',
+`user_permission` tinyint NOT NULL COMMENT '权限',
 PRIMARY KEY (user_id),
 key idx_dev(user_dev)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
@@ -126,12 +128,14 @@ PRIMARY KEY (behave_id),
 key idx_behave(behave_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='行为量化表';
 
---插入模拟传感器的数据
+--插入模拟传感器的数据`
 insert into device_data(device_id,ph_data,tds_data,temp_data)
 values("0001",8.00,1.23,21.5);
 --插入用户数据
-insert into user_info(user_id,user_pwd,user_dev,user_email)
-values("admin01","123456","0001","123456@qq.com");
+insert into user_info(user_id,user_pwd,user_dev,user_email,user_permission)
+values("admin01","123456","0000","admin@qq.com","1");
+("user01","123456","0001","user@qq.com","0");
+
 --插入行为数据
 insert into behave(behave_id,behave_desc,behave_part,behave_value) values("A01","体色发黑","体表",100),("A02","体色苍白","体表",101),("A03","背鳍或臀鳍至尾鳍的体色呈白色","体表",102),("A04","鱼体局部、全部出血发炎明显","体表",103),("A05","鱼体两侧出血或充血","体表",104);
 insert into behave(behave_id,behave_desc,behave_part,behave_value) values("B01","头部乌黑","头部",100),("B02","头部充血","头部",101),("B03","口腔充血","头部",102),("B04","唇肿胀、口腔溃烂","头部",103),("B05","口部溃烂、粘液分泌","头部",104);

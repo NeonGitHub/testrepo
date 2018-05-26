@@ -23,7 +23,6 @@ import cn.graProject.entity.Device;
 import cn.graProject.entity.DiseaseCase;
 import cn.graProject.entity.Fish;
 import cn.graProject.entity.TreatmentCase;
-import cn.graProject.entity.TreatmentCheck;
 import cn.graProject.entity.User;
 import cn.graProject.service.CaseService;
 import cn.graProject.service.DataService;
@@ -165,7 +164,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value="/caseSubmit")
-	public String caseSubmit(TreatmentCheck treatmentCheck,Model model) {
+	public String caseSubmit(TreatmentCase treatmentCheck,Model model) {
 		caseService.addTreatmentCheck(treatmentCheck);
 		return "redirect:/caseAdd";
 	}

@@ -6,6 +6,11 @@
 	<select id="queryUserByEmail" resultType="User" parameterType="String">
 		select * from user_info where user_email=#{userEmail}
 	</select>
+	
+	<insert id="userRegister" parameterType="cn.graProject.entity.User">
+	insert into user_info(user_id,user_pwd,user_dev,user_email,user_picture,user_permission) 
+	values(#{userId},#{userPwd},#{userDev},#{userEmail},#{userPicture},#{userPermission})
+	</insert>
 
 
 

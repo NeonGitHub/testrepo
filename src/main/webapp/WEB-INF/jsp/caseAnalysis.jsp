@@ -61,7 +61,7 @@
 						<li><a href="#">案例分析</a></li>
 						<li><a href="/graProject/caseAdd">添加案例</a></li>
 					</ul></li>
-				<li><a href="/graProject/newsList">社交资讯</a></li>
+				<li><a href="/graProject/newsList">通知及资讯</a></li>
 			</ul>
 		</div>
 		<!-- /.nav-collapse -->
@@ -234,7 +234,7 @@
 									<select name="characterF" class="myAselect">
 										<option>--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
-											<c:if test="${behave.behavePart=='鱼鳞'}">
+											<c:if test="${behave.behavePart=='鱼鳍'}">
 												<option value="${behave.behaveId}">${behave.behaveDesc}</option>
 											</c:if>
 										</c:forEach>
@@ -335,11 +335,6 @@
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="/graProject/js/jquery-3.3.1.min.js"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
-	</script>
 	<script src="/graProject/js/bootstrap.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->

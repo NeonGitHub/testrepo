@@ -14,17 +14,17 @@
 
 <title>智能水族箱-管理员主页</title>
 
+
 <link href="/graProject/css/private.css" rel="stylesheet">
 <!-- Bootstrap core CSS -->
 <link href="/graProject/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
 <link href="/graProject/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="/graProject/css/offcanvas.css" rel="stylesheet">>
+<link href="/graProject/css/offcanvas.css" rel="stylesheet">
+
 <script src="/graProject/js/jquery-3.3.1.min.js"></script>
 <script src="/graProject/js/bootstrap.min.js"></script>
 <script src="/graProject/js/offcanvas.js"></script>
-
-
 </head>
 
 <body>
@@ -36,42 +36,42 @@
 				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">智能水族箱</a>
+			<a class="navbar-brand" href="#">智能水族箱</a>	
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-					<li><a href="home.html">首页</a></li>
-					<li class="active"><a href="#">管理员主页</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				<li><a href="#.html">首页</a></li>
+				<li><a href="/graProject/admin/${seesionScope.user.userId}?page=1&pageSize=10">管理员主页</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">
 						管理疾病种类 <span class="caret"></span>
 					</a>
-						<ul class="dropdown-menu">
-							<li><a href="/graProject/admin/findDisease?page=1&pageSize=10">查看疾病种类</a></li>
-							<li><a href="/graProject/admin/addDisease">添加疾病种类</a></li>
-						</ul>
-					</li>
+					<ul class="dropdown-menu">
+						<li><a href="/graProject/admin/findDisease?page=1&pageSize=10">查看疾病种类</a></li>
+						<li><a href="/graProject/admin/addDisease">添加疾病种类</a></li>
+					</ul></li>
 
 
-					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">
 						管理生物种类 <span class="caret"></span>
 					</a>
-						<ul class="dropdown-menu">
-							<li><a href="/graProject/admin/findFish?page=1&pageSize=10">查看生物种类</a></li>
-							<li><a href="/graProject/admin/addFish">添加生物种类</a></li>
-						</ul>
-					</li>
+					<ul class="dropdown-menu">
+						<li><a href="/graProject/admin/findFish?page=1&pageSize=10">查看生物种类</a></li>
+						<li><a href="/graProject/admin/addFish">添加生物种类</a></li>
+					</ul></li>
 
-					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">
 						管理案例 <span class="caret"></span>
 					</a>
-						<ul class="dropdown-menu">
-							<li><a href="/graProject/admin/findCase?page=1&pageSize=10">查看治愈案例</a></li>
-							<li><a href="/graProject/admin/addCase">添加治愈案例</a></li>
-							<li><a href="/graProject/admin/findCheckCase?page=1&pageSize=10">审核治愈案例</a></li>
-						</ul>
-					</li>
-					<li><a href="/graProject/admin/newslist?page=1&pageSize=10">资讯通知管理</a></li>
-				</ul>
+					<ul class="dropdown-menu">
+						<li><a href="/graProject/admin/findCase?page=1&pageSize=10">查看治愈案例</a></li>
+						<li><a href="/graProject/admin/addCase">添加治愈案例</a></li>
+						<li><a href="/graProject/admin/findCheckCase?page=1&pageSize=10">审核治愈案例</a></li>
+					</ul></li>
+				<li><a href="/graProject/admin/newslist?page=1&pageSize=10">资讯管理</a></li>
+			</ul>
 		</div>
 		<!-- /.nav-collapse -->
 	</div>
@@ -83,43 +83,60 @@
 		<div class="row row-offcanvas row-offcanvas-right">
 
 			<div class="col-xs-12 col-sm-9">
-				<h3>用户列表：</h3>
+				<div class="discuss">
+					<ul class="nav nav-tabs">
+						<li role="presentation"><a href="/graProject/admin/findCase?page=1&pageSize=10">查看所有案例</a></li>
+						<li role="presentation"><a href="/graProject/admin/addCase">添加治愈案例</a></li>
+						<li role="presentation" class="active"><a href="/graProject/admin/findCheckCase?page=1&pageSize=10">审核治愈案例</a></li>
+					</ul>
+				</div>
+				<div class="col-md-12">
+					<h3>审核案例</h3>
+				</div>
 
 				<div class="row" style="padding: 15px">
 
 					<table class="table">
 						<tr>
-							<th>数据编号</th>
-							<th>用户ID</th>
-							<th>密码</th>
-							<th>邮箱</th>
-							<th>关联设别ID</th>
-							<th>账号权限</th>
+							<th>案例编号</th>
+							<th>案例作者</th>
+							<th>生物种类</th>
+							<th>疾病编号</th>
+							<th>疾病名称</th>
+							<th>操作预留</th>
+							<th>操作预留</th>
+							<th>操作预留</th>
 						</tr>
-						<c:forEach items="${userList}" var="user" varStatus="num">
-						<tr>
-							<td>${num.count}</td>
-							<td>${user.userId}</td>
-							<td>${user.userPwd}</td>
-							<td>${user.userEmail}</td>
-							<td>${user.userDev}</td>
-							<td>${user.userPermission}</td>
-						</tr>
+						<c:forEach items="${treatmentList}" var="List">
+							<tr>
+								<td>${List.caseId}</td>
+								<td>${List.caseAuthor}</td>
+								<td>${List.fishName}</td>
+								<td>${List.diseaseId}</td>
+								<td>${List.diseaseName}</td>
+								<td><button type="button" onclick="window.location.href = '/graProject/admin/findOneCheckCase/${List.caseId}'" class="btn btn-info">详情</button></td>
+								<td><button type="button" onclick="window.location.href = '/graProject/admin/passCheckCase/${List.caseId}'" class="btn btn-success">通过</button></td>
+								<td><button type="button" onclick="window.location.href = '/graProject/admin/deleteCheckCase/${List.caseId}'" class="btn btn-danger">拒绝</button></td>
+							</tr>
 						</c:forEach>
+
 					</table>
 
 					<div class="col-md-4 col-md-offset-4">
 						<nav aria-label="Page navigation">
 						<ul class="pagination">
-							<li><a href="/graProject/admin/${sessionScope.user.userId}?page=1&pageSize=${pageSize}" aria-label="First">
+							<li><a href="/graProject/admin/findCheckCase?page=1&pageSize=${pageSize}"
+									aria-label="First">
 									<span aria-hidden="true">&laquo;</span>
 								</a></li>
 							<c:forEach var="i" begin="1" end="${totalPage}">
-								<li><a href="/graProject/admin/${sessionScope.user.userId}?page=${i}&pageSize=${pageSize}">
+								<li><a
+										href="/graProject/admin/findCheckCase?page=${i}&pageSize=${pageSize}">
 										<c:out value="${i}" />
 									</a></li>
 							</c:forEach>
-							<li><a href="/graProject/admin/${sessionScope.user.userId}?page=${totalPage}&pageSize=${pageSize}"
+							<li><a
+									href="/graProject/admin/findCheckCase?page=${totalPage}&pageSize=${pageSize}"
 									aria-label="Last">
 									<span aria-hidden="true">&raquo;</span>
 								</a></li>
@@ -129,6 +146,7 @@
 
 				</div>
 				<!--/row-->
+
 			</div>
 			<!--/.col-xs-12.col-sm-9-->
 
@@ -146,21 +164,24 @@
 						</div>
 					</div>
 				</div>
-				
+
+
 				<div class="list-group">
-					<a href="#" class="list-group-item active text-center">管理用户主页</a>
+					<a href="#" class="list-group-item text-center">管理用户主页</a>
 					<div class="dropdown">
-						<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">
 							管理疾病种类 <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" style="width: 100%">
-							<li class="text-center"><a href="/graProject/admin/findDisease?page=1&pageSize=10">查看疾病种类</a></li>
-							<li class="text-center"><a href="/graProject/admin/addDisease">添加疾病种类</a></li>
+							<li class="text-center"><a href="/graProject/admin/findCase?page=1&pageSize=10">查看疾病种类</a></li>
+							<li class="text-center"><a href="/graProject/admin/addCase">添加疾病种类</a></li>
 						</ul>
 					</div>
 
 					<div class="dropdown">
-						<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">
 							管理生物种类 <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" style="width: 100%">
@@ -170,7 +191,8 @@
 					</div>
 
 					<div class="dropdown">
-						<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<a class="list-group-item text-center  active dropdown-toggle" data-toggle="dropdown"
+							role="button" aria-haspopup="true" aria-expanded="false">
 							管理案例 <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" style="width: 100%">

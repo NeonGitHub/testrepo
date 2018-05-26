@@ -72,7 +72,7 @@
 						<li><a href="/graProject/caseAnalysis">案例分析</a></li>
 						<li><a href="/graProject/addCase">添加案例</a></li>
 					</ul></li>
-				<li><a href="/graProject/newsList">社交资讯</a></li>
+				<li><a href="/graProject/newsList">通知及资讯</a></li>
 			</ul>
 		</div>
 		<!-- /.nav-collapse -->
@@ -142,7 +142,7 @@
 				<!--小屏幕下是隐藏此部分的-->
 				<div class="userHeadDiv">
 					<img class="img-circle img-thumbnail "
-						src="/graProject/img/headpic.JPG" />
+						src="/graProject/images/${sessionScope.user.userPicture}" />
 					<div class="userInfoDiv">
 						<!--用户ID-->
 

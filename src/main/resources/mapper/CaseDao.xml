@@ -32,7 +32,7 @@
 		disease_case
 	</select>
 	
-	<insert id="addTreatmentCheck" parameterType="cn.graProject.entity.TreatmentCheck">
+	<insert id="addTreatmentCheck" parameterType="cn.graProject.entity.TreatmentCase">
 	insert into treatment_check(case_author,fish_name,ph_data,tds_data,temp_data,disease_id,disease_name,treatment) 
 	values(#{caseAuthor},#{fishName},#{phData},#{tdsData},#{tempData},#{diseaseId},#{diseaseName},#{treatment})
 	</insert>

@@ -15,7 +15,25 @@
 		device_data
 	</select>
 
+	<select id="getUserTotalPage" resultType="int">
+		select count(*) from
+		user_info
+	</select>
 
+	<select id="getDiseaseTotalPage" resultType="int">
+		select count(*) from
+		disease_case
+	</select>
 
+	<select id="getFishTotalPage" resultType="int">
+		select count(*) from
+		fish_type
+	</select>
+
+	<select id="getCheckCaseTotalPage" resultType="int">
+		select count(*)
+		from
+		treatment_check
+	</select>
 </mapper>
     

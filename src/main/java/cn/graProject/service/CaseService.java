@@ -12,13 +12,12 @@ import cn.graProject.entity.Behave;
 import cn.graProject.entity.DiseaseCase;
 import cn.graProject.entity.Fish;
 import cn.graProject.entity.TreatmentCase;
-import cn.graProject.entity.TreatmentCheck;
 
 @Service
 public class CaseService {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	@Autowired
 	private CaseDao caseDao;
 
@@ -30,10 +29,10 @@ public class CaseService {
 		return caseDao.findAllBehave();
 	}
 
-	public List<TreatmentCase> findTreatmentCase(int page,int pageSize) {
-		//计算页码开头是第几条
-		int page1=(page-1)*pageSize;
-		return caseDao.findTreatmentCase(page1,pageSize);
+	public List<TreatmentCase> findTreatmentCase(int page, int pageSize) {
+		// 计算页码开头是第几条
+		int page1 = (page - 1) * pageSize;
+		return caseDao.findTreatmentCase(page1, pageSize);
 	}
 
 	public TreatmentCase findTreatmentCaseInfoById(int caseId) {
@@ -48,11 +47,9 @@ public class CaseService {
 		return caseDao.findAllDiseaseCase();
 	}
 
-	public void addTreatmentCheck(TreatmentCheck treatmentCheck) {
+	public void addTreatmentCheck(TreatmentCase treatmentCheck) {
 		// TODO Auto-generated method stub
 		caseDao.addTreatmentCheck(treatmentCheck);
 	}
-	
-	
-	
+
 }

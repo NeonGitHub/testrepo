@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.graProject.dao.AdminDao">
+	<select id="findAllUser" resultType="User">
+		select * from user_info
+		limit #{offset},#{limit}
+	</select>
+	<select id="findAllDisease" resultType="DiseaseCase">
+		select * from
+		disease_case limit #{offset},#{limit}
+	</select>
+	<select id="findAllFish" resultType="Fish">
+		select * from fish_type
+		limit #{offset},#{limit}
+	</select>
+	<select id="findAllCheckCase" resultType="TreatmentCase">
+		select * from
+		treatment_check limit #{offset},#{limit}
+	</select>
+	<select id="findOneDiseaseCaseById" resultType="DiseaseCase">
+		select * from
+		disease_Case where disease_id=#{diseaseId}
+	</select>
+	<select id="findOneDiseaseDescById" resultType="DiseaseDesc">
+		select * from
+		disease_Desc where disease_id=#{diseaseId}
+	</select>
+	<select id="findOneCaseById" resultType="TreatmentCase">
+		select * from
+		treatment_case where case_id=#{caseId}
+	</select>
+	<select id="findOneCheckCaseById" resultType="TreatmentCase">
+		select * from
+		treatment_check where case_id=#{caseId}
+	</select>
+
+	<insert id="addDiseaseCase" parameterType="cn.graProject.entity.DiseaseCase">
+		insert into
+		disease_case(disease_name,disease_show,disease_reason)
+		values(#{diseaseName},#{diseaseShow},#{diseaseReason})
+	</insert>
+	<insert id="addDiseaseDesc" parameterType="cn.graProject.entity.DiseaseDesc">
+		insert into
+		disease_desc(disease_name,character_a,character_b,character_c,character_d,character_e,character_f,character_g,character_h)
+		values(#{diseaseName},#{characterA},#{characterB},#{characterC},#{characterD},#{characterE},#{characterF},#{characterG},#{characterH})
+	</insert>
+	<insert id="addFish">
+		insert into
+		fish_type(fish_name)
+		values(#{fishName})
+	</insert>
+	<insert id="addTreatmentCase" parameterType="cn.graProject.entity.TreatmentCase">
+		insert into
+		treatment_case(case_author,fish_name,ph_data,tds_data,temp_data,disease_id,disease_name,treatment)
+		values(#{caseAuthor},#{fishName},#{phData},#{tdsData},#{tempData},#{diseaseId},#{diseaseName},#{treatment})
+	</insert>
+
+	<delete id="deleteDiseaseCaseById">
+		delete from disease_case
+		where
+		disease_id=#{diseaseId}
+	</delete>
+	<delete id="deleteDiseaseDescById">
+		delete from disease_desc
+		where
+		disease_id=#{diseaseId}
+	</delete>
+	<delete id="deleteFish">
+		delete from fish_type
+		where
+		fish_id=#{fishId}
+	</delete>
+	<delete id="deleteCaseById">
+		delete from treatment_case
+		where
+		case_id=#{caseId}
+	</delete>
+	<delete id="deleteCheckCaseById">
+		delete from treatment_check
+		where
+		case_id=#{caseId}
+	</delete>
+
+	<update id="updateDiseaseCaseById">
+		update disease_case
+		set
+		disease_name=#{dcase.diseaseName},
+		disease_show=#{dcase.diseaseShow},
+		disease_reason=#{dcase.diseaseReason}
+		where
+		disease_id=#{dcase.diseaseId}
+	</update>
+	<update id="updateDiseaseDescById">
+		update disease_desc
+		set
+		disease_name=#{desc.diseaseName},
+		character_a=#{desc.characterA},
+		character_b=#{desc.characterB},
+		character_c=#{desc.characterC},
+		character_d=#{desc.characterD},
+		character_e=#{desc.characterE},
+		character_f=#{desc.characterF},
+		character_g=#{desc.characterG},
+		character_h=#{desc.characterH}
+		where
+		disease_id=#{desc.diseaseId}
+	</update>
+	<update id="updateCaseById">
+		update treatment_case
+		set
+		case_author=#{treatment.caseAuthor},
+		fish_name=#{treatment.fishName},
+		ph_data=#{treatment.phData},
+		tds_data=#{treatment.tdsData},
+		temp_data=#{treatment.tempData},
+		disease_id=#{treatment.diseaseId},
+		disease_name=#{treatment.diseaseName},
+		treatment=#{treatment.treatment}
+		where
+		case_id=#{treatment.caseId}
+	</update>
+</mapper>
+    

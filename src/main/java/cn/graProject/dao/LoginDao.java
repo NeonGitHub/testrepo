@@ -11,5 +11,7 @@ public interface LoginDao {
 	 * @return User
 	 */
 	User queryUserByEmail(String userEmail) ;
+
+	void userRegister(User user);
 	
 }

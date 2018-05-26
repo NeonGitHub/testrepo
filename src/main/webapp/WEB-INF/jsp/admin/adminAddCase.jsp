@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="common/tag.jsp"%>
+<%@include file="../common/tag.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -12,28 +12,19 @@
 <meta name="author" content="">
 <link rel="icon" href="/graProject/img/icon2.jpg">
 
-<title>智能水族箱-添加案例</title>
+<title>智能水族箱-管理员主页</title>
 
 <link href="/graProject/css/private.css" rel="stylesheet">
 <!-- Bootstrap core CSS -->
 <link href="/graProject/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
 <link href="/graProject/css/bootstrap-theme.min.css" rel="stylesheet">
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
 <link href="/graProject/css/offcanvas.css" rel="stylesheet">
 
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+<script src="/graProject/js/jquery-3.3.1.min.js"></script>
+<script src="/graProject/js/bootstrap.min.js"></script>
+<script src="/graProject/js/offcanvas.js"></script>
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -46,21 +37,41 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#">智能水族箱</a>
+			
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="home.html">首页</a></li>
-				<li><a href="/graProject/personal/${sessionScope.user.userId}">个人主页</a></li>
-				<li class="dropdown activex"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+				<li><a href="/graProject/">首页</a></li>
+				<li><a href="/graProject/admin/${sessionScope.user.userId}?page=1&pageSize=10">管理员主页</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
 						role="button" aria-haspopup="true" aria-expanded="false">
-						案例功能 <span class="caret"></span>
+						管理疾病种类 <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="/graProject/caseList?page=1&pageSize=10">查看案例</a></li>
-						<li><a href="/graProject/caseAnalysis">案例分析</a></li>
-						<li><a href="#">添加案例</a></li>
+						<li><a href="/graProject/admin/findDisease?page=1&pageSize=10">查看疾病种类</a></li>
+						<li><a href="/graProject/admin/addDisease">添加疾病种类</a></li>
 					</ul></li>
-				<li><a href="/graProject/newslist">通知及资讯</a></li>
+
+
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">
+						管理生物种类 <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/graProject/admin/findFish?page=1&pageSize=10">查看生物种类</a></li>
+						<li><a href="/graProject/admin/addFish">添加生物种类</a></li>
+					</ul></li>
+
+				<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">
+						管理案例 <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/graProject/admin/findCase?page=1&pageSize=10">查看治愈案例</a></li>
+						<li><a href="/graProject/admin/addCase">添加治愈案例</a></li>
+						<li><a href="/graProject/admin/findCheckCase?page=1&pageSize=10">审核治愈案例</a></li>
+					</ul></li>
+				<li><a href="/graProject/admin/newslist?page=1&pageSize=10">资讯管理</a></li>
 			</ul>
 		</div>
 		<!-- /.nav-collapse -->
@@ -73,21 +84,20 @@
 		<div class="row row-offcanvas row-offcanvas-right">
 
 			<div class="col-xs-12 col-sm-9">
-
 				<div class="discuss">
 					<ul class="nav nav-tabs">
-						<li role="presentation"><a href="/graProject/caseList?page=1&pageSize=10">查看案例</a></li>
-						<li role="presentation" class="active"><a href="#">申请提交案例</a></li>
+						<li role="presentation"><a href="/graProject/admin/findCase?page=1&pageSize=10">查看所有案例</a></li>
+						<li role="presentation" class="active"><a href="#">添加治愈案例</a></li>
+						<li role="presentation"><a href="/graProject/admin/findCheckCase?page=1&pageSize=10">审核治愈案例</a></li>
 					</ul>
 				</div>
-
 				<div class="col-md-12">
 					<h3>添加案例</h3>
 				</div>
-				<div class="myAtreat">
-					<form action="/graProject/caseSubmit">
-						 <input type="hidden" name="caseAuthor" value="${sessionScope.user.userId}"/>
 
+				<div class="myAtreat">
+					<form action="/graProject/admin/addCase2">
+					    <input type="hidden" name="caseAuthor" value="${sessionScope.user.userId}"/>
 						<br>
 						<div class="form-group">
 							<div class="col-md-3">
@@ -167,7 +177,7 @@
 							</div>
 							<div class="col-md-9">
 								<div class="input-group">
-									<textarea id="reason" class="form-control" readonly="readonly" 
+									<textarea class="form-control" id="reason" readonly="readonly" 
 										style="resize: none; font-size: 14px; width: 600px; height: 100px; border-radius: 5px;"></textarea>
 								</div>
 							</div>
@@ -202,17 +212,17 @@
 					</form>
 				</div>
 				<!--mytreat-->
+
 			</div>
 			<!--/.col-xs-12.col-sm-9-->
 
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
 				<!--小屏幕下是隐藏此部分的-->
 				<div class="userHeadDiv">
-					<!--用户头像-->
 					<img class="img-circle img-thumbnail " src="/graProject/img/headpic.JPG" />
-
 					<div class="userInfoDiv">
 						<!--用户ID-->
+
 						<h4>${sessionScope.user.userId}</h4>
 						<div class="btn-group" role="group" aria-label="...">
 							<button type="button" class="btn btn-default">个人设置</button>
@@ -220,12 +230,44 @@
 						</div>
 					</div>
 				</div>
+
+
 				<div class="list-group">
-					<a href="/graProject/persional/{sessionScope.user.userId}" class="list-group-item text-center">个人主页</a>
-					<a href="/graProject/historyList?page=1&pageSize=30" class="list-group-item text-center">历史数据</a>
-					<a href="/graProject/caseAnalysis" class="list-group-item text-center">案例分析</a>
-					<a href="/graProject/caseList?page=1&pageSize=10" class="list-group-item text-center">查看案例</a>
-					<a href="/graProject/caseAdd" class="list-group-item text-center active">添加案例</a>
+					<a href="#" class="list-group-item text-center">管理用户主页</a>
+					<div class="dropdown">
+						<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">
+							管理疾病种类 <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" style="width: 100%">
+							<li class="text-center"><a href="/graProject/admin/findDisease?page=1&pageSize=10">查看疾病种类</a></li>
+							<li class="text-center"><a href="/graProject/admin/addDisesae">添加疾病种类</a></li>
+						</ul>
+					</div>
+
+					<div class="dropdown">
+						<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">
+							管理生物种类 <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" style="width: 100%">
+							<li class="text-center"><a href="/graProject/admin/findFish?page=1&pageSize=10">查看已知生物种类</a></li>
+							<li class="text-center"><a href="/graProject/admin/addFish">添加生物种类</a></li>
+						</ul>
+					</div>
+
+					<div class="dropdown">
+						<a class="list-group-item text-center  active dropdown-toggle" data-toggle="dropdown"
+							role="button" aria-haspopup="true" aria-expanded="false">
+							管理案例 <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" style="width: 100%">
+							<li class="text-center"><a href="/graProject/admin/findCase?page=1&pageSize=10">查看治愈案例</a></li>
+							<li class="text-center"><a href="/graProject/admin/addCase">添加治愈案例</a></li>
+							<li class="text-center"><a href="/graProject/admin/findCheckCase?page=1&pageSize=10">审核治愈案例</a></li>
+						</ul>
+					</div>
+
 				</div>
 			</div>
 
@@ -243,9 +285,7 @@
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="/graProject/js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript">
+    <script type="text/javascript">
 		$(document).ready(
 				function() {
 					var fishList = $.parseJSON('${fishList}');
@@ -277,10 +317,7 @@
 					});
 				});
 	</script>
-	<script src="/graProject/js/bootstrap.min.js"></script>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
-	<script src="/graProject/js/offcanvas.js"></script>
+
 </body>
 
 </html>

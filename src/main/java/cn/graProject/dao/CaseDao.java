@@ -8,7 +8,7 @@ import cn.graProject.entity.Behave;
 import cn.graProject.entity.DiseaseCase;
 import cn.graProject.entity.Fish;
 import cn.graProject.entity.TreatmentCase;
-import cn.graProject.entity.TreatmentCheck;
+
 
 public interface CaseDao {
 
@@ -73,7 +73,7 @@ public interface CaseDao {
 	 * 这里用了和上面不同的传参方式
 	 * @param treatmentCheck
 	 */
-	void addTreatmentCheck(TreatmentCheck treatmentCheck);
+	void addTreatmentCheck(TreatmentCase treatmentCheck);
 	
 	
 

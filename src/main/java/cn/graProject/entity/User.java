@@ -9,6 +9,10 @@ public class User {
 	private String userDev;
 	
 	private String userEmail;
+	
+	private String userPicture;
+	
+	private int userPermission;
 
 	public String getUserId() {
 		return userId;
@@ -46,6 +50,22 @@ public class User {
 	public String toString() {
 		return "User [userId=" + userId + ", userPwd=" + userPwd + ", userDev=" + userDev + ", userEmail=" + userEmail
 				+ "]";
+	}
+
+	public int getUserPermission() {
+		return userPermission;
+	}
+
+	public void setUserPermission(int userPermission) {
+		this.userPermission = userPermission;
+	}
+
+	public String getUserPicture() {
+		return userPicture;
+	}
+
+	public void setUserPicture(String userPicture) {
+		this.userPicture = userPicture;
 	}
 	
 	
