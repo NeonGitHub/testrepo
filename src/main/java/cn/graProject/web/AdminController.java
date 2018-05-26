@@ -123,9 +123,9 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping(value = "/admin/addDisease2")
-	public String addDiseaseTwo(Model model, DiseaseCase disease, DiseaseDesc desc) {
+	public String addDiseaseTwo(Model model, DiseaseCase disease, DiseaseDto descDto) {
 
-		adminService.addDiseaseCase(disease, desc);
+		adminService.addDiseaseCase(disease, descDto);
 
 		List<Behave> behaveList = caseService.findAllBehave();
 		model.addAttribute("behaveList", behaveList);
@@ -171,8 +171,8 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping(value = "/admin/updateDisease2")
-	public String updateDiseaseTwo(Model model, DiseaseCase disease, DiseaseDesc desc) {
-		adminService.updateDiseaseCaseById(disease, desc);
+	public String updateDiseaseTwo(Model model, DiseaseCase disease, DiseaseDto descDto) {
+		adminService.updateDiseaseCaseById(disease, descDto);
 		return "redirect:/admin/findDisease?page=1&pageSize=10";
 	}
 

@@ -12,7 +12,7 @@ public class DiseaseDto {
 	private String characterF;
 	private String characterG;
 	private String characterH;
-	private String diseaseReason;
+
 	public int getDiseaseId() {
 		return diseaseId;
 	}
@@ -73,18 +73,13 @@ public class DiseaseDto {
 	public void setCharacterH(String characterH) {
 		this.characterH = characterH;
 	}
-	public String getDiseaseReason() {
-		return diseaseReason;
-	}
-	public void setDiseaseReason(String diseaseReason) {
-		this.diseaseReason = diseaseReason;
-	}
+	
 	@Override
 	public String toString() {
 		return "DiseaseDto [diseaseId=" + diseaseId + ", diseaseName=" + diseaseName + ", characterA=" + characterA
 				+ ", characterB=" + characterB + ", characterC=" + characterC + ", characterD=" + characterD
 				+ ", characterE=" + characterE + ", characterF=" + characterF + ", characterG=" + characterG
-				+ ", characterH=" + characterH + ", diseaseReason=" + diseaseReason + "]";
+				+ ", characterH=" + characterH + "]";
 	}
 	
 	

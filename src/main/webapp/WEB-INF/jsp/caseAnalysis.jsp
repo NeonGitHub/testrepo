@@ -135,7 +135,7 @@
 										<option>--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='体表'}">
-												<option value="${behave.behaveId}">${behave.behaveDesc}</option>
+												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
 											</c:if>
 										</c:forEach>
 									</select>
@@ -155,7 +155,7 @@
 										<option>--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='头部'}">
-												<option value="${behave.behaveId}">${behave.behaveDesc}</option>
+												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
 											</c:if>
 										</c:forEach>
 									</select>
@@ -176,7 +176,7 @@
 										<option>--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='腮部'}">
-												<option value="${behave.behaveId}">${behave.behaveDesc}</option>
+												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
 											</c:if>
 										</c:forEach>
 									</select>
@@ -197,7 +197,7 @@
 										<option>--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='腹部'}">
-												<option value="${behave.behaveId}">${behave.behaveDesc}</option>
+												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
 											</c:if>
 										</c:forEach>
 									</select>
@@ -216,7 +216,7 @@
 										<option>--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='鳞片'}">
-												<option value="${behave.behaveId}">${behave.behaveDesc}</option>
+												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
 											</c:if>
 										</c:forEach>
 									</select>
@@ -235,7 +235,7 @@
 										<option>--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='鱼鳍'}">
-												<option value="${behave.behaveId}">${behave.behaveDesc}</option>
+												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
 											</c:if>
 										</c:forEach>
 									</select>
@@ -254,7 +254,7 @@
 										<option>--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='肌肉'}">
-												<option value="${behave.behaveId}">${behave.behaveDesc}</option>
+												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
 											</c:if>
 										</c:forEach>
 									</select>
@@ -273,7 +273,7 @@
 										<option>--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='肠道'}">
-												<option value="${behave.behaveId}">${behave.behaveDesc}</option>
+												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
 											</c:if>
 										</c:forEach>
 									</select>

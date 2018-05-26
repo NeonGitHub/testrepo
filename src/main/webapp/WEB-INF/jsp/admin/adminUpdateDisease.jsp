@@ -131,11 +131,11 @@
 											<option value="">--请选择--</option>
 											<c:forEach items="${behaveList}" var="behave">
 												<c:choose>
-													<c:when test="${behave.behavePart=='体表'&&behave.behaveId!=diseaseDesc.characterA}">
-														<option value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='体表'&&behave.behaveValue!=diseaseDesc.characterA}">
+														<option value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
-													<c:when test="${behave.behavePart=='体表'&&behave.behaveId==diseaseDesc.characterA}">
-														<option selected="selected" value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='体表'&&behave.behaveValue==diseaseDesc.characterA}">
+														<option selected="selected" value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
 												</c:choose>
 											</c:forEach>
@@ -153,11 +153,11 @@
 										<option value="">--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:choose>
-												<c:when test="${behave.behavePart=='头部'&&behave.behaveId==diseaseDesc.characterB}">
-													<option selected="selected" value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+												<c:when test="${behave.behavePart=='头部'&&behave.behaveValue==diseaseDesc.characterB}">
+													<option selected="selected" value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 												</c:when>
-												<c:when test="${behave.behavePart=='头部'&&behave.behaveId!=diseaseDesc.characterB}">
-													<option value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+												<c:when test="${behave.behavePart=='头部'&&behave.behaveValue!=diseaseDesc.characterB}">
+													<option value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 												</c:when>
 											</c:choose>
 										</c:forEach>
@@ -176,11 +176,11 @@
 											<option value="">--请选择--</option>
 											<c:forEach items="${behaveList}" var="behave">
 												<c:choose>
-													<c:when test="${behave.behavePart=='腮部'&&behave.behaveId==diseaseDesc.characterC}">
-														<option selected="selected" value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='腮部'&&behave.behaveValue==diseaseDesc.characterC}">
+														<option selected="selected" value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
-													<c:when test="${behave.behavePart=='腮部'&&behave.behaveId!=diseaseDesc.characterC}">
-														<option value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='腮部'&&behave.behaveValue!=diseaseDesc.characterC}">
+														<option value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
 												</c:choose>
 											</c:forEach>
@@ -199,11 +199,11 @@
 											<option value="">--请选择--</option>
 											<c:forEach items="${behaveList}" var="behave">
 												<c:choose>
-													<c:when test="${behave.behavePart=='腹部'&&behave.behaveId==diseaseDesc.characterD}">
-														<option selected="selected" value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='腹部'&&behave.behaveValue==diseaseDesc.characterD}">
+														<option selected="selected" value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
-													<c:when test="${behave.behavePart=='腹部'&&behave.behaveId!=diseaseDesc.characterD}">
-														<option value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='腹部'&&behave.behaveValue!=diseaseDesc.characterD}">
+														<option value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
 												</c:choose>
 											</c:forEach>
@@ -222,11 +222,11 @@
 											<option value="">--请选择--</option>
 											<c:forEach items="${behaveList}" var="behave">
 												<c:choose>
-													<c:when test="${behave.behavePart=='鳞片'&&behave.behaveId==diseaseDesc.characterE}">
-														<option selected="selected" value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='鳞片'&&behave.behaveValue==diseaseDesc.characterE}">
+														<option selected="selected" value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
-													<c:when test="${behave.behavePart=='鳞片'&&behave.behaveId!=diseaseDesc.characterE}">
-														<option value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='鳞片'&&behave.behaveValue!=diseaseDesc.characterE}">
+														<option value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
 												</c:choose>
 											</c:forEach>
@@ -245,11 +245,11 @@
 											<option value="">--请选择--</option>
 											<c:forEach items="${behaveList}" var="behave">
 												<c:choose>
-													<c:when test="${behave.behavePart=='鱼鳍'&&behave.behaveId==diseaseDesc.characterF}">
-														<option selected="selected" value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='鱼鳍'&&behave.behaveValue==diseaseDesc.characterF}">
+														<option selected="selected" value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
-													<c:when test="${behave.behavePart=='鱼鳍'&&behave.behaveId!=diseaseDesc.characterF}">
-														<option value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='鱼鳍'&&behave.behaveValue!=diseaseDesc.characterF}">
+														<option value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
 												</c:choose>
 											</c:forEach>
@@ -268,11 +268,11 @@
 											<option value="">--请选择--</option>
 											<c:forEach items="${behaveList}" var="behave">
 												<c:choose>
-													<c:when test="${behave.behavePart=='肌肉'&&behave.behaveId==diseaseDesc.characterG}">
-														<option selected="selected" value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='肌肉'&&behave.behaveValue==diseaseDesc.characterG}">
+														<option selected="selected" value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
-													<c:when test="${behave.behavePart=='肌肉'&&behave.behaveId!=diseaseDesc.characterG}">
-														<option value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='肌肉'&&behave.behaveValue!=diseaseDesc.characterG}">
+														<option value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
 												</c:choose>
 											</c:forEach>
@@ -288,14 +288,14 @@
 									</div>
 									<div class="col-md-4">
 										<select name="characterH" class="myAselect">
-											<option value=null>--请选择--</option>
+											<option value="">--请选择--</option>
 											<c:forEach items="${behaveList}" var="behave">
 												<c:choose>
-													<c:when test="${behave.behavePart=='肠道'&&behave.behaveId==diseaseDesc.characterH}">
-														<option selected="selected" value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='肠道'&&behave.behaveValue==diseaseDesc.characterH}">
+														<option selected="selected" value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
-													<c:when test="${behave.behavePart=='肠道'&&behave.behaveId!=diseaseDesc.characterH}">
-														<option value="${behave.behaveId}+${behave.behaveDesc}">${behave.behaveDesc}</option>
+													<c:when test="${behave.behavePart=='肠道'&&behave.behaveValue!=diseaseDesc.characterH}">
+														<option value="${behave.behaveValue}+${behave.behaveDesc}">${behave.behaveDesc}</option>
 													</c:when>
 												</c:choose>
 											</c:forEach>

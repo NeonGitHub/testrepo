@@ -31,14 +31,14 @@ key idx_dev(device_id)
 CREATE TABLE disease_desc(
 `disease_id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '数据记录自增主键',
 `disease_name` varchar(10) NOT NULL COMMENT '疾病名称',
-`character_a` varchar(4) COMMENT '体表特征值',
-`character_b` varchar(4) COMMENT '头部特征值',
-`character_c` varchar(4) COMMENT '腮部特征值',
-`character_d` varchar(4) COMMENT '腹部特征值',
-`character_e` varchar(4) COMMENT '鳞片特征值',
-`character_f` varchar(4) COMMENT '鱼鳍特征值',
-`character_g` varchar(4) COMMENT '肌肉特征值',
-`character_h` varchar(4) COMMENT '肠道特征值',
+`character_a` tinyint COMMENT '体表特征值',
+`character_b` tinyint COMMENT '头部特征值',
+`character_c` tinyint COMMENT '腮部特征值',
+`character_d` tinyint COMMENT '腹部特征值',
+`character_e` tinyint COMMENT '鳞片特征值',
+`character_f` tinyint COMMENT '鱼鳍特征值',
+`character_g` tinyint COMMENT '肌肉特征值',
+`character_h` tinyint COMMENT '肠道特征值',
  PRIMARY KEY (disease_id),
 key idx_disease(disease_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='疾病特征表';

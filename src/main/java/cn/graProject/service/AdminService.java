@@ -58,70 +58,72 @@ public class AdminService {
 	}
 
 	@Transactional
-	public void addDiseaseCase(DiseaseCase disease, DiseaseDesc desc) {
+	public void addDiseaseCase(DiseaseCase disease, DiseaseDto descDto) {
 		StringBuffer show = new StringBuffer();
 		StringBuffer show1 = new StringBuffer();
+		DiseaseDesc diseaseDesc=new DiseaseDesc();
+		diseaseDesc.setDiseaseName(descDto.getDiseaseName());
 		try {
 			// A01+xxxx
-			if (!desc.getCharacterA().isEmpty()) {
-				show.append(desc.getCharacterA());
-				desc.setCharacterA(show.substring(0, 3));
+			if (!descDto.getCharacterA().isEmpty()) {
+				show.append(descDto.getCharacterA());
+				diseaseDesc.setCharacterA(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// B01+xxxx
-			if (!desc.getCharacterB().isEmpty()) {
-				show.append(desc.getCharacterB());
-				desc.setCharacterB(show.substring(0, 3));
+			if (!descDto.getCharacterB().isEmpty()) {
+				show.append(descDto.getCharacterB());
+				diseaseDesc.setCharacterB(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// C01+xxx
-			if (!desc.getCharacterC().isEmpty()) {
-				show.append(desc.getCharacterC());
-				desc.setCharacterC(show.substring(0, 3));
+			if (!descDto.getCharacterC().isEmpty()) {
+				show.append(descDto.getCharacterC());
+				diseaseDesc.setCharacterC(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// D01+xxx
-			if (!desc.getCharacterD().isEmpty()) {
-				show.append(desc.getCharacterD());
-				desc.setCharacterD(show.substring(0, 3));
+			if (!descDto.getCharacterD().isEmpty()) {
+				show.append(descDto.getCharacterD());
+				diseaseDesc.setCharacterD(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// E01+xxx
-			if (!desc.getCharacterE().isEmpty()) {
-				show.append(desc.getCharacterE());
-				desc.setCharacterE(show.substring(0, 3));
+			if (!descDto.getCharacterE().isEmpty()) {
+				show.append(descDto.getCharacterE());
+				diseaseDesc.setCharacterE(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// F01+xxx
-			if (!desc.getCharacterF().isEmpty()) {
-				show.append(desc.getCharacterF());
-				desc.setCharacterF(show.substring(0, 3));
+			if (!descDto.getCharacterF().isEmpty()) {
+				show.append(descDto.getCharacterF());
+				diseaseDesc.setCharacterF(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// G01+xxx
-			if (!desc.getCharacterG().isEmpty()) {
-				show.append(desc.getCharacterG());
-				desc.setCharacterG(show.substring(0, 3));
+			if (!descDto.getCharacterG().isEmpty()) {
+				show.append(descDto.getCharacterG());
+				diseaseDesc.setCharacterG(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// H01+xxx
-			if (!desc.getCharacterH().isEmpty()) {
-				show.append(desc.getCharacterH());
-				desc.setCharacterH(show.substring(0, 3));
+			if (!descDto.getCharacterH().isEmpty()) {
+				show.append(descDto.getCharacterH());
+				diseaseDesc.setCharacterH(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 			}
@@ -129,7 +131,7 @@ public class AdminService {
 			disease.setDiseaseShow(show2);
 
 			adminDao.addDiseaseCase(disease);
-			adminDao.addDiseaseDesc(desc);
+			adminDao.addDiseaseDesc(diseaseDesc);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -151,70 +153,74 @@ public class AdminService {
 	}
 
 	@Transactional
-	public void updateDiseaseCaseById(DiseaseCase disease, DiseaseDesc desc) {
+	public void updateDiseaseCaseById(DiseaseCase disease, DiseaseDto descDto) {
 		StringBuffer show = new StringBuffer();
 		StringBuffer show1 = new StringBuffer();
+		
+		DiseaseDesc diseaseDesc=new DiseaseDesc();
+		diseaseDesc.setDiseaseName(descDto.getDiseaseName());
+		diseaseDesc.setDiseaseId(descDto.getDiseaseId());
 		try {
 			// A01+xxxx
-			if (!desc.getCharacterA().isEmpty()) {
-				show.append(desc.getCharacterA());
-				desc.setCharacterA(show.substring(0, 3));
+			if (!descDto.getCharacterA().isEmpty()) {
+				show.append(descDto.getCharacterA());
+				diseaseDesc.setCharacterA(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// B01+xxxx
-			if (!desc.getCharacterB().isEmpty()) {
-				show.append(desc.getCharacterB());
-				desc.setCharacterB(show.substring(0, 3));
+			if (!descDto.getCharacterB().isEmpty()) {
+				show.append(descDto.getCharacterB());
+				diseaseDesc.setCharacterB(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// C01+xxx
-			if (!desc.getCharacterC().isEmpty()) {
-				show.append(desc.getCharacterC());
-				desc.setCharacterC(show.substring(0, 3));
+			if (!descDto.getCharacterC().isEmpty()) {
+				show.append(descDto.getCharacterC());
+				diseaseDesc.setCharacterC(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// D01+xxx
-			if (!desc.getCharacterD().isEmpty()) {
-				show.append(desc.getCharacterD());
-				desc.setCharacterD(show.substring(0, 3));
+			if (!descDto.getCharacterD().isEmpty()) {
+				show.append(descDto.getCharacterD());
+				diseaseDesc.setCharacterD(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// E01+xxx
-			if (!desc.getCharacterE().isEmpty()) {
-				show.append(desc.getCharacterE());
-				desc.setCharacterE(show.substring(0, 3));
+			if (!descDto.getCharacterE().isEmpty()) {
+				show.append(descDto.getCharacterE());
+				diseaseDesc.setCharacterE(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// F01+xxx
-			if (!desc.getCharacterF().isEmpty()) {
-				show.append(desc.getCharacterF());
-				desc.setCharacterF(show.substring(0, 3));
+			if (!descDto.getCharacterF().isEmpty()) {
+				show.append(descDto.getCharacterF());
+				diseaseDesc.setCharacterF(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// G01+xxx
-			if (!desc.getCharacterG().isEmpty()) {
-				show.append(desc.getCharacterG());
-				desc.setCharacterG(show.substring(0, 3));
+			if (!descDto.getCharacterG().isEmpty()) {
+				show.append(descDto.getCharacterG());
+				diseaseDesc.setCharacterG(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 				show.setLength(0);
 			}
 			// H01+xxx
-			if (!desc.getCharacterH().isEmpty()) {
-				show.append(desc.getCharacterH());
-				desc.setCharacterH(show.substring(0, 3));
+			if (!descDto.getCharacterH().isEmpty()) {
+				show.append(descDto.getCharacterH());
+				diseaseDesc.setCharacterH(Integer.parseInt(show.substring(0, 3)));
 				show1.append(show.substring(4));
 				show1.append(" ");
 			}
@@ -222,7 +228,7 @@ public class AdminService {
 			disease.setDiseaseShow(show2);
 
 			adminDao.updateDiseaseCaseById(disease);
-			adminDao.updateDiseaseDescById(desc);
+			adminDao.updateDiseaseDescById(diseaseDesc);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

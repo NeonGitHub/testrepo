@@ -5,14 +5,14 @@ public class DiseaseDesc {
 	
 	private int diseaseId;
 	private String diseaseName;
-	private String characterA;
-	private String characterB;
-	private String characterC;
-	private String characterD;
-	private String characterE;
-	private String characterF;
-	private String characterG;
-	private String characterH;
+	private int characterA;
+	private int characterB;
+	private int characterC;
+	private int characterD;
+	private int characterE;
+	private int characterF;
+	private int characterG;
+	private int characterH;
 	
 	public int getDiseaseId() {
 		return diseaseId;
@@ -26,52 +26,53 @@ public class DiseaseDesc {
 	public void setDiseaseName(String diseaseName) {
 		this.diseaseName = diseaseName;
 	}
-	public String getCharacterA() {
+	
+	public int getCharacterA() {
 		return characterA;
 	}
-	public void setCharacterA(String characterA) {
+	public void setCharacterA(int characterA) {
 		this.characterA = characterA;
 	}
-	public String getCharacterB() {
+	public int getCharacterB() {
 		return characterB;
 	}
-	public void setCharacterB(String characterB) {
+	public void setCharacterB(int characterB) {
 		this.characterB = characterB;
 	}
-	public String getCharacterC() {
+	public int getCharacterC() {
 		return characterC;
 	}
-	public void setCharacterC(String characterC) {
+	public void setCharacterC(int characterC) {
 		this.characterC = characterC;
 	}
-	public String getCharacterD() {
+	public int getCharacterD() {
 		return characterD;
 	}
-	public void setCharacterD(String characterD) {
+	public void setCharacterD(int characterD) {
 		this.characterD = characterD;
 	}
-	public String getCharacterE() {
+	public int getCharacterE() {
 		return characterE;
 	}
-	public void setCharacterE(String characterE) {
+	public void setCharacterE(int characterE) {
 		this.characterE = characterE;
 	}
-	public String getCharacterF() {
+	public int getCharacterF() {
 		return characterF;
 	}
-	public void setCharacterF(String characterF) {
+	public void setCharacterF(int characterF) {
 		this.characterF = characterF;
 	}
-	public String getCharacterG() {
+	public int getCharacterG() {
 		return characterG;
 	}
-	public void setCharacterG(String characterG) {
+	public void setCharacterG(int characterG) {
 		this.characterG = characterG;
 	}
-	public String getCharacterH() {
+	public int getCharacterH() {
 		return characterH;
 	}
-	public void setCharacterH(String characterH) {
+	public void setCharacterH(int characterH) {
 		this.characterH = characterH;
 	}
 	@Override
