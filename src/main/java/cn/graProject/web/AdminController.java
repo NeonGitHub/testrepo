@@ -29,6 +29,26 @@ import cn.graProject.service.AdminService;
  * @author zhangjingxuan
  *
  */
+/**
+ * @author zhangjingxuan
+ *
+ */
+/**
+ * @author zhangjingxuan
+ *
+ */
+/**
+ * @author zhangjingxuan
+ *
+ */
+/**
+ * @author zhangjingxuan
+ *
+ */
+/**
+ * @author zhangjingxuan
+ *
+ */
 @Controller
 public class AdminController {
 
@@ -177,6 +197,7 @@ public class AdminController {
 
 	/**
 	 * 管理生物种类(2)--添加鱼种
+	 * 
 	 * @param model
 	 * @param fish
 	 * @return
@@ -186,24 +207,89 @@ public class AdminController {
 	public String addFishOne() {
 		return "/admin/adminAddFish";
 	}
-	
+
 	@RequestMapping(value = "/admin/addFish2")
 	public String addFishTwo(Fish fish) {
 		adminService.addFish(fish);
 		return "redirect:/admin/findFish?page=1&pageSize=10";
 	}
-	
+
 	/**
 	 * 管理生物种类(3)--删除鱼种
+	 * 
 	 * @param fishId
 	 * @return
 	 */
-	@RequestMapping(value="/admin/deleteFish/{fishId}")
+	@RequestMapping(value = "/admin/deleteFish/{fishId}")
 	public String deleteFish(@PathVariable("fishId") int fishId) {
 		adminService.deleteFishById(fishId);
 		return "redirect:/admin/findFish?page=1&pageSize=10";
 	}
+
+	/**
+	 * 管理特征（1）--查找所有特征
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/admin/findBehave")
+	public String findBehave(Model model, @RequestParam int page, @RequestParam int pageSize) {
+		// 页码处理
+		int totalPage = pageService.getBehaveTotalPage(pageSize);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("totalPage", totalPage);
+		List<Behave> BehaveList = adminService.findAllBehave(page, pageSize);
+		model.addAttribute("BehaveList", BehaveList);
+		return "/admin/adminFindBehave";
+	}
+
+	/**
+	 * 管理特征（2）--添加特征
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/admin/addBehave")
+	public String addBehaveOne() {
+		return "/admin/adminAddBehave";
+	}
+
+	@RequestMapping(value = "/admin/addBehave2")
+	public String addBehaveTwo(Behave behave) {
+		adminService.addBehave(behave);
+		return "redirect:/admin/findBehave?page=1&pageSize=10";
+	}
+
+	/**
+	 * 管理特征（3）--更新特征1 进入具体信息页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value="/admin/updateBehave/{behaveId}")
+	public String updateBehaveOne(Model model,@PathVariable("behaveId") String behaveId) {
+		Behave behave=adminService.findOneBehaveById(behaveId);
+		model.addAttribute("behave", behave);
+		return "/admin/adminUpdateBehave";
+	}
+
+	/**
+	 * 管理特征（4）--更新特征2 插入数据库
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value="/admin/updateBehave2")
+	public String updateBehaveTwo(Model model,Behave behave) {
+		adminService.updateBehaveById(behave);
+		return "redirect:/admin/findBehave?page=1&pageSize=10";
+	}
 	
+	/**
+	 * 管理特征（5）--删除特征
+	 * @return
+	 */
+	@RequestMapping(value="/admin/deleteBehave/{behaveId}")
+	public String deleteBehave(@PathVariable("behaveId") String behaveId) {
+		adminService.deleteBehaveById(behaveId);
+		return "redirect:/admin/findBehave?page=1&pageSize=10";
+	}
 
 	/**
 	 * 管理案例(1) --查看治愈案例
@@ -242,130 +328,139 @@ public class AdminController {
 		model.addAttribute("treatmentList", treatmentList);
 		return "/admin/adminCheckCase";
 	}
+
 	/**
 	 * 管理案例(3)--添加案例1 跳转添加页面
+	 * 
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/admin/addCase")
+	@RequestMapping(value = "/admin/addCase")
 	public String addCaseOne(Model model) {
 		List<Fish> fishList = caseService.findAllFishType();
-		List<DiseaseCase> diseaseList=caseService.findAllDiseaseCase();
-		String fishJson=JSONArray.toJSONString(fishList);
-		String diseaseJson=JSONArray.toJSONString(diseaseList);
+		List<DiseaseCase> diseaseList = caseService.findAllDiseaseCase();
+		String fishJson = JSONArray.toJSONString(fishList);
+		String diseaseJson = JSONArray.toJSONString(diseaseList);
 		model.addAttribute("fishList", fishJson);
-		model.addAttribute("diseaseList",diseaseJson);
+		model.addAttribute("diseaseList", diseaseJson);
 		return "/admin/adminAddCase";
 	}
-	
+
 	/**
 	 * 管理案例(4)--添加案例2 插入数据库 跳转主页面
+	 * 
 	 * @param treatment
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/admin/addCase2")
-	public String addCaseTwo(TreatmentCase treatment,Model model) {
+	@RequestMapping(value = "/admin/addCase2")
+	public String addCaseTwo(TreatmentCase treatment, Model model) {
 		adminService.addTreatmentCase(treatment);
 		return "redirect:/admin/findCase?page=1&pageSize=10";
 	}
-	
-	/**管理案例(5)--删除案例库中案例
+
+	/**
+	 * 管理案例(5)--删除案例库中案例
+	 * 
 	 * @param model
-	 * @return 
+	 * @return
 	 * @return
 	 */
-	@RequestMapping(value="/admin/deleteCase/{caseId}")
+	@RequestMapping(value = "/admin/deleteCase/{caseId}")
 	public String deleteCase(@PathVariable("caseId") int caseId) {
 		adminService.deleteCaseById(caseId);
 		return "redirect:/admin/findCase?page=1&pageSize=10";
 	}
-	
+
 	/**
 	 * 管理案例(6)--更改案例库中案例
+	 * 
 	 * @param caseId
 	 * @return
 	 */
-	@RequestMapping(value="/admin/updateCase/{caseId}")
-	public String updateCaseOne(@PathVariable("caseId") int caseId,Model model) {
-		TreatmentCase treatment=adminService.findOneCaseById(caseId);
+	@RequestMapping(value = "/admin/updateCase/{caseId}")
+	public String updateCaseOne(@PathVariable("caseId") int caseId, Model model) {
+		TreatmentCase treatment = adminService.findOneCaseById(caseId);
 		List<Fish> fishList = caseService.findAllFishType();
-		List<DiseaseCase> diseaseList=caseService.findAllDiseaseCase();
-		String fishJson=JSONArray.toJSONString(fishList);
-		String diseaseJson=JSONArray.toJSONString(diseaseList);
+		List<DiseaseCase> diseaseList = caseService.findAllDiseaseCase();
+		String fishJson = JSONArray.toJSONString(fishList);
+		String diseaseJson = JSONArray.toJSONString(diseaseList);
 		model.addAttribute("fishList", fishJson);
-		model.addAttribute("diseaseList",diseaseJson);
-		model.addAttribute("diseaseList2",diseaseList);
-		model.addAttribute("treatment",treatment);
+		model.addAttribute("diseaseList", diseaseJson);
+		model.addAttribute("diseaseList2", diseaseList);
+		model.addAttribute("treatment", treatment);
 		return "/admin/adminCaseInfo";
 	}
-	
+
 	/**
 	 * 管理案例(7)--更改案例 提交
+	 * 
 	 * @param caseId
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/admin/updateCase2")
-	public String updateCaseTwo(TreatmentCase treatment,Model model) {
+	@RequestMapping(value = "/admin/updateCase2")
+	public String updateCaseTwo(TreatmentCase treatment, Model model) {
 		adminService.updateCaseById(treatment);
-		
+
 		return "redirect:/admin/findCase?page=1&pageSize=10";
 	}
 
-	
 	/**
 	 * 管理案例(8)--审核案例功能 删除(不通过)
+	 * 
 	 * @return
 	 */
-	@RequestMapping(value="/admin/deleteCheckCase/{caseId}")
+	@RequestMapping(value = "/admin/deleteCheckCase/{caseId}")
 	public String deleteCheckCase(@PathVariable("caseId") int caseId) {
 		adminService.deleteCheckCaseById(caseId);
 		return "redirect:/admin/findCheckCase?page=1&pageSize=10";
 	}
-	
+
 	/**
 	 * 管理案例(9)--审核案例--通过 by Id
+	 * 
 	 * @return
 	 */
-	@RequestMapping(value="/admin/passCheckCase/{caseId}")
+	@RequestMapping(value = "/admin/passCheckCase/{caseId}")
 	public String passCheckCase(@PathVariable("caseId") int caseId) {
-		//找到 删除 添加
+		// 找到 删除 添加
 		adminService.passOneCheckCaseById(caseId);
-		return "redirect:/admin/findCheckCase?page=1&pageSize=10";		
+		return "redirect:/admin/findCheckCase?page=1&pageSize=10";
 	}
-	
+
 	/**
 	 * 管理案例(10)--审核案例--审核案例的详情
+	 * 
 	 * @param caseId
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/admin/findOneCheckCase/{caseId}")
-	public String findOneCheckCase(@PathVariable("caseId") int caseId,Model model) {
-		TreatmentCase treatment=adminService.findOneCheckCaseById(caseId);
+	@RequestMapping(value = "/admin/findOneCheckCase/{caseId}")
+	public String findOneCheckCase(@PathVariable("caseId") int caseId, Model model) {
+		TreatmentCase treatment = adminService.findOneCheckCaseById(caseId);
 		List<Fish> fishList = caseService.findAllFishType();
-		List<DiseaseCase> diseaseList=caseService.findAllDiseaseCase();
-		String fishJson=JSONArray.toJSONString(fishList);
-		String diseaseJson=JSONArray.toJSONString(diseaseList);
+		List<DiseaseCase> diseaseList = caseService.findAllDiseaseCase();
+		String fishJson = JSONArray.toJSONString(fishList);
+		String diseaseJson = JSONArray.toJSONString(diseaseList);
 		model.addAttribute("fishList", fishJson);
-		model.addAttribute("diseaseList",diseaseJson);
-		model.addAttribute("diseaseList2",diseaseList);
-		model.addAttribute("treatment",treatment);
-		return "/admin/adminCheckCaseInfo";		
+		model.addAttribute("diseaseList", diseaseJson);
+		model.addAttribute("diseaseList2", diseaseList);
+		model.addAttribute("treatment", treatment);
+		return "/admin/adminCheckCaseInfo";
 	}
-	
+
 	/**
 	 * 管理案例(11)--通过(更改后的)案例
+	 * 
 	 * @param caseId
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/admin/passCheckCase2")
+	@RequestMapping(value = "/admin/passCheckCase2")
 	public String passCheckCaseTwo(TreatmentCase treatment) {
 		adminService.passOneCheckCaseByTreatment(treatment);
-		return "redirect:/admin/findCheckCase?page=1&pageSize=10";	
+		return "redirect:/admin/findCheckCase?page=1&pageSize=10";
 	}
-	
-	
+
 }

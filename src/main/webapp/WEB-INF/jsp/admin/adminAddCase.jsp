@@ -37,7 +37,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#">智能水族箱</a>
-			
+
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
@@ -60,6 +60,15 @@
 					<ul class="dropdown-menu">
 						<li><a href="/graProject/admin/findFish?page=1&pageSize=10">查看生物种类</a></li>
 						<li><a href="/graProject/admin/addFish">添加生物种类</a></li>
+					</ul></li>
+
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">
+						管理特征表现 <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/graProject/admin/findBehave?page=1&pageSize=10">查看特征表现</a></li>
+						<li><a href="/graProject/admin/addBehave">添加特征表现</a></li>
 					</ul></li>
 
 				<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
@@ -97,7 +106,7 @@
 
 				<div class="myAtreat">
 					<form action="/graProject/admin/addCase2">
-					    <input type="hidden" name="caseAuthor" value="${sessionScope.user.userId}"/>
+						<input type="hidden" name="caseAuthor" value="${sessionScope.user.userId}" />
 						<br>
 						<div class="form-group">
 							<div class="col-md-3">
@@ -143,7 +152,7 @@
 									<option value="">--请选择--</option>
 
 								</select>
-								<input type="hidden" id="diseaseName" name="diseaseName" value=""/>
+								<input type="hidden" id="diseaseName" name="diseaseName" value="" />
 							</div>
 						</div>
 						<!--form-group-->
@@ -159,7 +168,7 @@
 							</div>
 							<div class="col-md-9">
 								<div class="input-group">
-									<textarea id="show" class="form-control" readonly="readonly" 
+									<textarea id="show" class="form-control" readonly="readonly"
 										style="resize: none; font-size: 14px; width: 600px; height: 100px; border-radius: 5px;"></textarea>
 								</div>
 							</div>
@@ -177,7 +186,7 @@
 							</div>
 							<div class="col-md-9">
 								<div class="input-group">
-									<textarea class="form-control" id="reason" readonly="readonly" 
+									<textarea class="form-control" id="reason" readonly="readonly"
 										style="resize: none; font-size: 14px; width: 600px; height: 100px; border-radius: 5px;"></textarea>
 								</div>
 							</div>
@@ -257,6 +266,17 @@
 					</div>
 
 					<div class="dropdown">
+						<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">
+							管理特征表现 <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" style="width: 100%">
+							<li class="text-center"><a href="/graProject/admin/findBehave?page=1&pageSize=10">查看特征表现</a></li>
+							<li class="text-center"><a href="/graProject/admin/addBehave">添加特征表现</a></li>
+						</ul>
+					</div>
+
+					<div class="dropdown">
 						<a class="list-group-item text-center  active dropdown-toggle" data-toggle="dropdown"
 							role="button" aria-haspopup="true" aria-expanded="false">
 							管理案例 <span class="caret"></span>
@@ -285,7 +305,7 @@
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <script type="text/javascript">
+	<script type="text/javascript">
 		$(document).ready(
 				function() {
 					var fishList = $.parseJSON('${fishList}');

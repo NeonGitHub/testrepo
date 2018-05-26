@@ -36,7 +36,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#">智能水族箱</a>
-			
+
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
@@ -59,6 +59,15 @@
 					<ul class="dropdown-menu">
 						<li><a href="/graProject/admin/findFish?page=1&pageSize=10">查看生物种类</a></li>
 						<li><a href="/graProject/admin/addFish">添加生物种类</a></li>
+					</ul></li>
+
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">
+						管理特征表现 <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/graProject/admin/findBehave?page=1&pageSize=10">查看特征表现</a></li>
+						<li><a href="/graProject/admin/addBehave">添加特征表现</a></li>
 					</ul></li>
 
 				<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
@@ -158,7 +167,7 @@
 									<option value="">--请选择--</option>
 								</select>
 							</div>
-							<input type="hidden" id="diseaseName" name="diseaseName" value="${treatment.diseaseName}"/>
+							<input type="hidden" id="diseaseName" name="diseaseName" value="${treatment.diseaseName}" />
 						</div>
 						<!--form-group-->
 						<div class="col-md-12">
@@ -174,8 +183,12 @@
 							<div class="col-md-9">
 								<div class="input-group">
 									<textarea class="form-control" id="show" readonly="readonly"
-										style="resize: none; font-size: 14px; width: 600px; height: 100px; border-radius: 5px;"><c:forEach items="${diseaseList2}" var="List"><c:if test="${List.diseaseId==treatment.diseaseId}"><c:out value="${List.diseaseShow}"></c:out>
-									</c:if></c:forEach></textarea>
+										style="resize: none; font-size: 14px; width: 600px; height: 100px; border-radius: 5px;"><c:forEach
+											items="${diseaseList2}" var="List">
+											<c:if test="${List.diseaseId==treatment.diseaseId}">
+												<c:out value="${List.diseaseShow}"></c:out>
+									</c:if>
+										</c:forEach></textarea>
 								</div>
 							</div>
 						</div>
@@ -193,8 +206,12 @@
 							<div class="col-md-9">
 								<div class="input-group">
 									<textarea class="form-control" id="reason" readonly="readonly"
-												style="resize: none; font-size: 14px; width: 600px; height: 100px; border-radius: 5px;"><c:forEach items="${diseaseList2}" var="List"><c:if test="${List.diseaseId==treatment.diseaseId}"><c:out value="${List.diseaseReason}"></c:out>
-									</c:if></c:forEach></textarea>
+										style="resize: none; font-size: 14px; width: 600px; height: 100px; border-radius: 5px;"><c:forEach
+											items="${diseaseList2}" var="List">
+											<c:if test="${List.diseaseId==treatment.diseaseId}">
+												<c:out value="${List.diseaseReason}"></c:out>
+									</c:if>
+										</c:forEach></textarea>
 								</div>
 							</div>
 						</div>
@@ -222,7 +239,9 @@
 
 						<div class="col-md-3 col-md-offset-5">
 							<button type="submit" class="btn btn-success">通过</button>
-							<button type="button" onclick="window.location.href = '/graProject/admin/deleteCheckCase/${treatment.caseId}'" class="btn btn-danger">拒绝</button>
+							<button type="button"
+								onclick="window.location.href = '/graProject/admin/deleteCheckCase/${treatment.caseId}'"
+								class="btn btn-danger">拒绝</button>
 						</div>
 					</form>
 				</div>
@@ -268,6 +287,17 @@
 						<ul class="dropdown-menu" style="width: 100%">
 							<li class="text-center"><a href="/graProject/admin/findFish?page=1&pageSize=10">查看已知生物种类</a></li>
 							<li class="text-center"><a href="/graProject/admin/addFish">添加生物种类</a></li>
+						</ul>
+					</div>
+					
+					<div class="dropdown">
+						<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown"
+							role="button" aria-haspopup="true" aria-expanded="false">
+							管理特征表现 <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" style="width: 100%">
+							<li class="text-center"><a href="/graProject/admin/findBehave?page=1&pageSize=10">查看特征表现</a></li>
+							<li class="text-center"><a href="/graProject/admin/addBehave">添加特征表现</a></li>
 						</ul>
 					</div>
 
@@ -327,7 +357,7 @@
 											+ item.diseaseName + '</option>')
 						}
 					})
-					
+
 					$(document).on("change", 'select#diseaseType', function() {
 						var id = $(this).val();
 						if (id == 0) {

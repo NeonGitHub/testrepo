@@ -63,6 +63,15 @@
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
 						role="button" aria-haspopup="true" aria-expanded="false">
+						管理特征表现 <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/graProject/admin/findBehave?page=1&pageSize=10">查看特征表现</a></li>
+						<li><a href="/graProject/admin/addBehave">添加特征表现</a></li>
+					</ul></li>
+
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">
 						管理案例 <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
@@ -165,7 +174,19 @@
 							<li class="text-center"><a href="/graProject/admin/addCase">添加生物种类</a></li>
 						</ul>
 					</div>
-
+					
+					<div class="dropdown">
+						<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown"
+							role="button" aria-haspopup="true" aria-expanded="false">
+							管理特征表现 <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" style="width: 100%">
+							<li class="text-center"><a href="/graProject/admin/findBehave?page=1&pageSize=10">查看特征表现</a></li>
+							<li class="text-center"><a href="/graProject/admin/addBehave">添加特征表现</a></li>
+						</ul>
+					</div>
+					
+					
 					<div class="dropdown">
 						<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown" role="button"
 							aria-haspopup="true" aria-expanded="false">

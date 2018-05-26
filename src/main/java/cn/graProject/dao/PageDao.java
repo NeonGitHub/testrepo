@@ -14,4 +14,6 @@ public interface PageDao {
 	
 	int getCheckCaseTotalPage();
 
+	int getBehaveTotalPage();
+
 }

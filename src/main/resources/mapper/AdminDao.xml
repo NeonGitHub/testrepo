@@ -15,6 +15,10 @@
 		select * from fish_type
 		limit #{offset},#{limit}
 	</select>
+	<select id="findAllBehave" resultType="Behave">
+		select * from Behave
+		limit #{offset},#{limit}
+	</select>
 	<select id="findAllCheckCase" resultType="TreatmentCase">
 		select * from
 		treatment_check limit #{offset},#{limit}
@@ -35,6 +39,10 @@
 		select * from
 		treatment_check where case_id=#{caseId}
 	</select>
+	<select id="findOneBehaveById" resultType="Behave">
+		select * from
+		behave where behave_id=#{behaveId}
+	</select>
 
 	<insert id="addDiseaseCase" parameterType="cn.graProject.entity.DiseaseCase">
 		insert into
@@ -50,6 +58,11 @@
 		insert into
 		fish_type(fish_name)
 		values(#{fishName})
+	</insert>
+	<insert id="addBehave" parameterType="cn.graProject.entity.Behave">
+		insert into
+		behave(behave_id,behave_desc,behave_part,behave_value)
+		values(#{behaveId},#{behaveDesc},#{behavePart},#{behaveValue})
 	</insert>
 	<insert id="addTreatmentCase" parameterType="cn.graProject.entity.TreatmentCase">
 		insert into
@@ -81,6 +94,11 @@
 		delete from treatment_check
 		where
 		case_id=#{caseId}
+	</delete>
+	<delete id="deleteBehaveById">
+		delete from behave
+		where
+		behave_id=#{behaveId}
 	</delete>
 
 	<update id="updateDiseaseCaseById">
@@ -120,6 +138,15 @@
 		treatment=#{treatment.treatment}
 		where
 		case_id=#{treatment.caseId}
+	</update>
+	<update id="updateBehaveById">
+		update behave
+		set
+		behave_desc=#{behave.behaveDesc},
+		behave_part=#{behave.behavePart},
+		behave_value=#{behave.behaveValue}
+		where
+		behave_id=#{behave.behaveId}
 	</update>
 </mapper>
     

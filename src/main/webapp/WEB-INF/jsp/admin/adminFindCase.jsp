@@ -37,7 +37,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#">智能水族箱</a>
-			
+
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
@@ -60,6 +60,15 @@
 					<ul class="dropdown-menu">
 						<li><a href="/graProject/admin/findFish?page=1&pageSize=10">查看生物种类</a></li>
 						<li><a href="/graProject/admin/addFish">添加生物种类</a></li>
+					</ul></li>
+
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">
+						管理特征表现 <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/graProject/admin/findBehave?page=1&pageSize=10">查看特征表现</a></li>
+						<li><a href="/graProject/admin/addBehave">添加特征表现</a></li>
 					</ul></li>
 
 				<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
@@ -112,8 +121,12 @@
 								<td>${List.diseaseId}</td>
 								<td>${List.diseaseName}</td>
 
-								<td><button type="button" onclick="window.location.href = '/graProject/admin/deleteCase/${List.caseId}'" class="btn btn-danger">删除</button></td>
-								<td><button type="button" onclick="window.location.href = '/graProject/admin/updateCase/${List.caseId}'" class="btn btn-warning">详情/更改</button></td>
+								<td><button type="button"
+										onclick="window.location.href = '/graProject/admin/deleteCase/${List.caseId}'"
+										class="btn btn-danger">删除</button></td>
+								<td><button type="button"
+										onclick="window.location.href = '/graProject/admin/updateCase/${List.caseId}'"
+										class="btn btn-warning">详情/更改</button></td>
 							</tr>
 						</c:forEach>
 
@@ -127,13 +140,11 @@
 									<span aria-hidden="true">&laquo;</span>
 								</a></li>
 							<c:forEach var="i" begin="1" end="${totalPage}">
-								<li><a
-										href="/graProject/admin/findCheckCase?page=${i}&pageSize=${pageSize}">
+								<li><a href="/graProject/admin/findCheckCase?page=${i}&pageSize=${pageSize}">
 										<c:out value="${i}" />
 									</a></li>
 							</c:forEach>
-							<li><a
-									href="/graProject/admin/findCheckCase?page=${totalPage}&pageSize=${pageSize}"
+							<li><a href="/graProject/admin/findCheckCase?page=${totalPage}&pageSize=${pageSize}"
 									aria-label="Last">
 									<span aria-hidden="true">&raquo;</span>
 								</a></li>
@@ -184,6 +195,17 @@
 						<ul class="dropdown-menu" style="width: 100%">
 							<li class="text-center"><a href="/graProject/admin/findFish?page=1&pageSize=10">查看已知生物种类</a></li>
 							<li class="text-center"><a href="/graProject/admin/addFish">添加生物种类</a></li>
+						</ul>
+					</div>
+					
+					<div class="dropdown">
+						<a class="list-group-item text-center dropdown-toggle" data-toggle="dropdown"
+							role="button" aria-haspopup="true" aria-expanded="false">
+							管理特征表现 <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" style="width: 100%">
+							<li class="text-center"><a href="/graProject/admin/findBehave?page=1&pageSize=10">查看特征表现</a></li>
+							<li class="text-center"><a href="/graProject/admin/addBehave">添加特征表现</a></li>
 						</ul>
 					</div>
 

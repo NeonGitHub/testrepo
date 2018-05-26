@@ -29,6 +29,11 @@
 		select count(*) from
 		fish_type
 	</select>
+	
+	<select id="getBehaveTotalPage" resultType="int">
+		select count(*) from
+		behave
+	</select>
 
 	<select id="getCheckCaseTotalPage" resultType="int">
 		select count(*)

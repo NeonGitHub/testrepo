@@ -88,4 +88,17 @@ public class PageService {
 		return totalPage;
 	}
 
+
+	public int getBehaveTotalPage(int pageSize) {
+		int totalPage = 0;
+		int total = 0;
+		total = pageDao.getBehaveTotalPage();
+		if (total % pageSize == 0) {
+			totalPage = total / pageSize;
+		} else {
+			totalPage = total / pageSize + 1;
+		}
+		return totalPage;
+	}
+
 }

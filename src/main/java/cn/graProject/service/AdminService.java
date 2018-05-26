@@ -45,6 +45,12 @@ public class AdminService {
 
 	}
 
+	public List<Behave> findAllBehave(int page, int pageSize) {
+		// 计算页码开头是第几条
+		int page1 = (page - 1) * pageSize;
+		return adminDao.findAllBehave(page1, pageSize);
+	}
+
 	public List<TreatmentCase> findAllCheckCase(int page, int pageSize) {
 		// 计算页码开头是第几条
 		int page1 = (page - 1) * pageSize;
@@ -268,6 +274,21 @@ public class AdminService {
 		adminDao.deleteCheckCaseById(treatment.getCaseId());
 		adminDao.addTreatmentCase(treatment);
 
+	}
+
+	public void addBehave(Behave behave) {
+		adminDao.addBehave(behave);
+	}
+	public void updateBehaveById(Behave behave) {
+		adminDao.updateBehaveById(behave);
+	}
+
+	public Behave findOneBehaveById(String id) {
+		return adminDao.findOneBehaveById(id);
+	}
+
+	public void deleteBehaveById(String behaveId) {
+		adminDao.deleteBehaveById(behaveId);
 	}
 
 }
