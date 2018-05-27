@@ -1,5 +1,10 @@
 package cn.graProject.dto;
 
+/**
+ * 承接从管理员添加疾病页面传来的 疾病特征数据
+ * @author zhangjingxuan
+ *
+ */
 public class DiseaseDto {
 	
 	private int diseaseId;

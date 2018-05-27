@@ -25,30 +25,7 @@ import cn.graProject.service.DataService;
 import cn.graProject.service.PageService;
 import cn.graProject.service.AdminService;
 
-/**
- * @author zhangjingxuan
- *
- */
-/**
- * @author zhangjingxuan
- *
- */
-/**
- * @author zhangjingxuan
- *
- */
-/**
- * @author zhangjingxuan
- *
- */
-/**
- * @author zhangjingxuan
- *
- */
-/**
- * @author zhangjingxuan
- *
- */
+ 
 @Controller
 public class AdminController {
 

@@ -4,6 +4,12 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.graProject.dao.CaseDao">
 
+	<insert id="addTreatmentCheck" parameterType="cn.graProject.entity.TreatmentCase">
+		insert into
+		treatment_check(case_author,fish_name,ph_data,tds_data,temp_data,disease_id,disease_name,treatment)
+		values(#{caseAuthor},#{fishName},#{phData},#{tdsData},#{tempData},#{diseaseId},#{diseaseName},#{treatment})
+	</insert>
+
 	<select id="findAllFishType" resultType="Fish">
 		select * from fish_type
 	</select>
@@ -32,10 +38,12 @@
 		disease_case
 	</select>
 	
-	<insert id="addTreatmentCheck" parameterType="cn.graProject.entity.TreatmentCase">
-	insert into treatment_check(case_author,fish_name,ph_data,tds_data,temp_data,disease_id,disease_name,treatment) 
-	values(#{caseAuthor},#{fishName},#{phData},#{tdsData},#{tempData},#{diseaseId},#{diseaseName},#{treatment})
-	</insert>
+	<select id="findAllDiseaseDesc" resultType="DiseaseDesc">
+		select * from
+		disease_desc
+	</select>
+
+
 
 </mapper>
     

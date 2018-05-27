@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
 
+import cn.graProject.dto.AnalysisDto;
+import cn.graProject.dto.CaseDto;
 import cn.graProject.entity.Behave;
 import cn.graProject.entity.Device;
 import cn.graProject.entity.DiseaseCase;
@@ -60,23 +62,8 @@ public class UserController {
 		return "personal";
 	}
 
-	
-	@RequestMapping(value="/historyList")
-	public String histroyList(HttpSession httpSession,@RequestParam int page, @RequestParam int pageSize, Model model) {
-		//页码处理
-		int totalPage = pageService.getDataTotalPage(pageSize);
-		model.addAttribute("pageSize", pageSize);
-		model.addAttribute("totalPage", totalPage);
-		User user = (User) httpSession.getAttribute("user");
-		List<Device> historyList=dataService.findDataByPage(user.getUserDev(),page,pageSize);
-		
-		model.addAttribute("historyList", historyList);
-		return "historyList";
-		
-	}
-	
 	/**
-	 * 历史数据折线图 异步请求
+	 * 个人数据 历史数据折线图 异步请求
 	 * 
 	 * @param httpSession
 	 * @return
@@ -88,10 +75,33 @@ public class UserController {
 		return dataService.findAllData(user.getUserDev());
 	}
 
-	
-	
 	/**
-	 * 案例分析—>填写案例特征
+	 * 历史数据查询
+	 * 
+	 * @param httpSession
+	 * @param page
+	 * @param pageSize
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/historyList")
+	public String histroyList(HttpSession httpSession, @RequestParam int page, @RequestParam int pageSize,
+			Model model) {
+		// 页码处理
+		int totalPage = pageService.getDataTotalPage(pageSize);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("totalPage", totalPage);
+		User user = (User) httpSession.getAttribute("user");
+		List<Device> historyList = dataService.findDataByPage(user.getUserDev(), page, pageSize);
+
+		model.addAttribute("historyList", historyList);
+		return "historyList";
+
+	}
+
+	/**
+	 * 案例分析（1） —>填写案例特征
+	 * 
 	 * @param model
 	 * @return
 	 */
@@ -105,7 +115,33 @@ public class UserController {
 	}
 
 	/**
+	 * 案例分析（2） ->提交案例特征
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/caseAnalysisSubmit")
+	public String caseAnalysisOne(Model model, CaseDto caseDto) {
+		// TO DO 分析比对案例相似度，返回一个列表，前10个analysisDto
+		List<AnalysisDto> analysisDtoList = caseService.analysisCase(caseDto);
+		model.addAttribute("analysisDtoList", analysisDtoList);
+		// 跳转到“分析”页面 取前10个相似案例
+		return "caseAnalysis2";
+	}
+
+	@RequestMapping(value = "/caseAnalysis2/{caseId}/diseaseId/{diseaseId}")
+	public String caseAnalysisTwo(Model model, @PathVariable("caseId") int caseId,@PathVariable("diseaseId") int diseaseId) {
+		// 根据id找到案例并展示
+		TreatmentCase treatmentCase = caseService.findTreatmentCaseInfoById(caseId);
+		DiseaseCase diseaseCase = caseService.findDiseaseCaseInfoById(diseaseId);
+
+		model.addAttribute("treatmentCase", treatmentCase);
+		model.addAttribute("diseaseCase", diseaseCase);
+		return "caseAnalysis3";
+	}
+
+	/**
 	 * 查看案例 向页面返回案例列表
+	 * 
 	 * @param page
 	 * @param pageSize
 	 * @param model
@@ -125,49 +161,51 @@ public class UserController {
 
 	/**
 	 * 在案例列表里点某个案例后 案例详情
+	 * 
 	 * @param caseId
 	 * @param diseaseId
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "/caseInfo/{caseId}/diseaseId/{diseaseId}")
-	public String caseInfo(@PathVariable("caseId") int caseId,@PathVariable("diseaseId") int diseaseId,Model model) {
-		TreatmentCase treatmentCase=caseService.findTreatmentCaseInfoById(caseId);
-		DiseaseCase diseaseCase=caseService.findDiseaseCaseInfoById(diseaseId);
-		
+	public String caseInfo(@PathVariable("caseId") int caseId, @PathVariable("diseaseId") int diseaseId, Model model) {
+		TreatmentCase treatmentCase = caseService.findTreatmentCaseInfoById(caseId);
+		DiseaseCase diseaseCase = caseService.findDiseaseCaseInfoById(diseaseId);
+
 		model.addAttribute("treatmentCase", treatmentCase);
-		model.addAttribute("diseaseCase",diseaseCase);
+		model.addAttribute("diseaseCase", diseaseCase);
 		return "caseInfo";
 	}
-	
+
 	/**
 	 * 转向案例添加页面
+	 * 
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/caseAdd")
+	@RequestMapping(value = "/caseAdd")
 	public String caseAdd(Model model) {
 		List<Fish> fishList = caseService.findAllFishType();
-		List<DiseaseCase> diseaseList=caseService.findAllDiseaseCase();
-		String fishJson=JSONArray.toJSONString(fishList);
-		String diseaseJson=JSONArray.toJSONString(diseaseList);
+		List<DiseaseCase> diseaseList = caseService.findAllDiseaseCase();
+		String fishJson = JSONArray.toJSONString(fishList);
+		String diseaseJson = JSONArray.toJSONString(diseaseList);
 		model.addAttribute("fishList", fishJson);
-		model.addAttribute("diseaseList",diseaseJson);
+		model.addAttribute("diseaseList", diseaseJson);
 		return "caseAdd";
-		
+
 	}
-	
+
 	/**
 	 * 案例添加 提交审核
+	 * 
 	 * @param treatmentCheck
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/caseSubmit")
-	public String caseSubmit(TreatmentCase treatmentCheck,Model model) {
+	@RequestMapping(value = "/caseSubmit")
+	public String caseSubmit(TreatmentCase treatmentCheck, Model model) {
 		caseService.addTreatmentCheck(treatmentCheck);
 		return "redirect:/caseAdd";
 	}
-	
 
 }

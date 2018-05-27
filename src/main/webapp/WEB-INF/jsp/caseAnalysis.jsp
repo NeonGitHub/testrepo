@@ -20,21 +20,10 @@
 <link href="/graProject/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
 <link href="/graProject/css/bootstrap-theme.min.css" rel="stylesheet">
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
 <link href="/graProject/css/offcanvas.css" rel="stylesheet">
-
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<script src="/graProject/js/jquery-3.3.1.min.js"></script>
+<script src="/graProject/js/bootstrap.min.js"></script>
+<script src="/graProject/js/offcanvas.js"></script>
 </head>
 
 <body>
@@ -83,7 +72,7 @@
 					</ul>
 				</div>
 
-				<form action="caseAnalysis2.html" method="post">
+				<form action="/graProject/caseAnalysisSubmit" method="post">
 					<div class="col-md-12">
 						<h3>填写基本情况</h3>
 					</div>
@@ -95,7 +84,7 @@
 									<span>鱼的种类：</span>
 								</div>
 								<div class="col-md-4">
-									<select name="fishType" class="myAselect">
+									<select name="fishName" class="myAselect">
 										<option>--请选择--</option>
 										<c:forEach items="${fishList}" var="fish">
 											<option value="${fish.fishName}">${fish.fishName}</option>
@@ -132,7 +121,7 @@
 								</div>
 								<div class="col-md-4">
 									<select name="characterA" class="myAselect">
-										<option>--请选择--</option>
+										<option value="">--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='体表'}">
 												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
@@ -152,7 +141,7 @@
 								</div>
 								<div class="col-md-4">
 									<select name="characterB" class="myAselect">
-										<option>--请选择--</option>
+										<option value="0">--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='头部'}">
 												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
@@ -173,7 +162,7 @@
 								</div>
 								<div class="col-md-4">
 									<select name="characterC" class="myAselect">
-										<option>--请选择--</option>
+										<option value="0">--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='腮部'}">
 												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
@@ -194,7 +183,7 @@
 								</div>
 								<div class="col-md-4">
 									<select name="characterD" class="myAselect">
-										<option>--请选择--</option>
+										<option value="0">--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='腹部'}">
 												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
@@ -213,7 +202,7 @@
 								</div>
 								<div class="col-md-4">
 									<select name="characterE" class="myAselect">
-										<option>--请选择--</option>
+										<option value="0">--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='鳞片'}">
 												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
@@ -232,7 +221,7 @@
 								</div>
 								<div class="col-md-4">
 									<select name="characterF" class="myAselect">
-										<option>--请选择--</option>
+										<option value="0">--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='鱼鳍'}">
 												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
@@ -251,7 +240,7 @@
 								</div>
 								<div class="col-md-4">
 									<select name="characterG" class="myAselect">
-										<option>--请选择--</option>
+										<option value="0">--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='肌肉'}">
 												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
@@ -270,7 +259,7 @@
 								</div>
 								<div class="col-md-4">
 									<select name="characterH" class="myAselect">
-										<option>--请选择--</option>
+										<option value="0">--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='肠道'}">
 												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>
@@ -331,14 +320,6 @@
 	</div>
 	<!--/.container-->
 
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="/graProject/js/jquery-3.3.1.min.js"></script>
-	<script src="/graProject/js/bootstrap.min.js"></script>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
-	<script src="/graProject/js/offcanvas.js"></script>
 </body>
 
 </html>

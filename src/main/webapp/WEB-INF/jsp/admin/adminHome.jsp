@@ -20,7 +20,6 @@
 <!-- Bootstrap theme -->
 <link href="/graProject/css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="/graProject/css/offcanvas.css" rel="stylesheet">
->
 <script src="/graProject/js/jquery-3.3.1.min.js"></script>
 <script src="/graProject/js/bootstrap.min.js"></script>
 <script src="/graProject/js/offcanvas.js"></script>

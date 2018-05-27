@@ -1,10 +1,14 @@
-package cn.graProject.entity;
+package cn.graProject.dto;
 
-public class DiseaseDesc {
-
+/**
+ * 承接从案例分析页面传来的案例
+ * @author zhangjingxuan
+ *
+ */
+public class CaseDto {
 	
-	private int diseaseId;
-	private String diseaseName;
+	
+	private String fishName;
 	private int characterA;
 	private int characterB;
 	private int characterC;
@@ -13,20 +17,16 @@ public class DiseaseDesc {
 	private int characterF;
 	private int characterG;
 	private int characterH;
-	
-	public int getDiseaseId() {
-		return diseaseId;
+	private double phData;
+	private double tdsData;
+	private double tempData;
+
+	public String getFishName() {
+		return fishName;
 	}
-	public void setDiseaseId(int diseaseId) {
-		this.diseaseId = diseaseId;
+	public void setFishName(String fishName) {
+		this.fishName = fishName;
 	}
-	public String getDiseaseName() {
-		return diseaseName;
-	}
-	public void setDiseaseName(String diseaseName) {
-		this.diseaseName = diseaseName;
-	}
-	
 	public int getCharacterA() {
 		return characterA;
 	}
@@ -75,25 +75,27 @@ public class DiseaseDesc {
 	public void setCharacterH(int characterH) {
 		this.characterH = characterH;
 	}
-	@Override
-	public String toString() {
-		return "DiseaseCase [diseaseId=" + diseaseId + ", diseaseName=" + diseaseName + ", characterA=" + characterA
-				+ ", characterB=" + characterB + ", characterC=" + characterC + ", characterD=" + characterD
-				+ ", characterE=" + characterE + ", characterF=" + characterF + ", characterG=" + characterG
-				+ ", characterH=" + characterH + "]";
+	public double getPhData() {
+		return phData;
 	}
-	public int getCharacterbyNum(int i){
-		switch(i){ 
-		case 1:return this.characterA;
-		case 2:return this.characterB;
-		case 3:return this.characterC;
-		case 4:return this.characterD;
-		case 5:return this.characterE;
-		case 6:return this.characterF;
-		case 7:return this.characterG;
-		case 8:return this.characterH;
-		default: throw new RuntimeException();
-			}
+	public void setPhData(double phData) {
+		this.phData = phData;
 	}
+	public double getTdsData() {
+		return tdsData;
+	}
+	public void setTdsData(double tdsData) {
+		this.tdsData = tdsData;
+	}
+	public double getTempData() {
+		return tempData;
+	}
+	public void setTempData(double tempData) {
+		this.tempData = tempData;
+	}
+
 	
+	
+	
+
 }

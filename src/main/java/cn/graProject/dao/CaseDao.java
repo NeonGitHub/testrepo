@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import cn.graProject.entity.Behave;
 import cn.graProject.entity.DiseaseCase;
+import cn.graProject.entity.DiseaseDesc;
 import cn.graProject.entity.Fish;
 import cn.graProject.entity.TreatmentCase;
 
@@ -45,7 +46,7 @@ public interface CaseDao {
 	/**
 	 * 查询一个治愈案例详情
 	 * @param caseId 案例编号
-	 * @return 案例详情
+	 * @return TreatmentCase案例详情
 	 */
 	TreatmentCase findTreatmentCaseInfoById(@Param("caseId") int caseId);
 
@@ -74,7 +75,14 @@ public interface CaseDao {
 	 * @param treatmentCheck
 	 */
 	void addTreatmentCheck(TreatmentCase treatmentCheck);
-	
-	
+
+
+
+	/**
+	 * 查找疾病描述列表，用来案例分析
+	 * @return
+	 */
+	List<DiseaseDesc> findAllDiseaseDesc();
+
 
 }
