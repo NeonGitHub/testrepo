@@ -110,6 +110,7 @@ public class CaseService {
 			AnalysisDto analysisDto = new AnalysisDto();
 			analysisDto.setDistance1(list.get(num).getValue());
 			//list.get(num).getKey()是疾病编号！！
+			// TODO bug
 			analysisDto.setTreatment(caseDao.findTreatmentCaseInfoById(list.get(num).getKey()));
 			aftersortList.add(analysisDto);
 		}
