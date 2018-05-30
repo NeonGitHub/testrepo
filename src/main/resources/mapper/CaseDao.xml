@@ -27,6 +27,11 @@
 		select * from
 		treatment_case where case_id=#{caseId}
 	</select>
+	
+	<select id="findTreatmentCaseListById" resultType="TreatmentCase">
+		select * from
+		treatment_case where disease_id=#{diseaseId}
+	</select>
 
 	<select id="findDiseaseCaseInfoById" resultType="DiseaseCase">
 		select * from

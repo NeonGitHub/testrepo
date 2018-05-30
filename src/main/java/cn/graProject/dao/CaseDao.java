@@ -85,4 +85,13 @@ public interface CaseDao {
 	List<DiseaseDesc> findAllDiseaseDesc();
 
 
+
+	/**
+	 * 查找疾病对应的案例列表
+	 * @param key
+	 * @return 
+	 */
+	List<TreatmentCase> findTreatmentCaseListById(@Param("diseaseId") int diseaseId);
+
+
 }

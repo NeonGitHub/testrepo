@@ -107,12 +107,15 @@ public class CaseService {
 		for (int num = 0; num < len; num++) {
 			//化成百分比
 //			analysisDto.setDistance1(100 - (double)Math.round(list.get(num).getValue() * 1000) / 1000);
-			AnalysisDto analysisDto = new AnalysisDto();
-			analysisDto.setDistance1(list.get(num).getValue());
-			//list.get(num).getKey()是疾病编号！！
-			// TODO bug
-			analysisDto.setTreatment(caseDao.findTreatmentCaseInfoById(list.get(num).getKey()));
-			aftersortList.add(analysisDto);
+			List<TreatmentCase> caseList=caseDao.findTreatmentCaseListById(list.get(num).getKey());
+			for(int count=0;count<caseList.size();count++) {
+				AnalysisDto analysisDto = new AnalysisDto();
+				analysisDto.setDistance1(list.get(num).getValue());
+				//list.get(num).getKey()是疾病编号！！
+				// TODO bug
+				analysisDto.setTreatment(caseList.get(count));
+				aftersortList.add(analysisDto);			
+			}		
 		}
 		//进行鱼种 环境值计算距离
 		aftersortList=calculateEnviron(caseDto, aftersortList);
@@ -146,7 +149,6 @@ public class CaseService {
 	 */
 	public static Map<Integer, Double> calculateKnn(DiseaseDesc x, List<DiseaseDesc> list) {
 
-		
 		Map<Integer, Double> dismap = new HashMap<Integer, Double>();
 		for (DiseaseDesc y : list) {
 			double distance = 0.00;
@@ -155,8 +157,8 @@ public class CaseService {
 				distance += Math.pow(x.getCharacterbyNum(j) - y.getCharacterbyNum(j), 2);
 			}
 			distance = Math.sqrt(distance);
-			distance = (double)Math.round(distance*1000)/1000;
-			
+			distance = (double) Math.round(distance * 1000) / 1000;
+
 			// 还是用Map存放 key-病例ID value-距离
 			dismap.put(y.getDiseaseId(), distance);
 			distance = 0;
@@ -168,7 +170,7 @@ public class CaseService {
 	 * 计算10个案例环境值的匹配度
 	 */
 	public static List<AnalysisDto> calculateEnviron(CaseDto caseDto, List<AnalysisDto> aftersortList) {
-		
+
 		// 计算distance2 鱼种是否相等
 		for (AnalysisDto dto : aftersortList) {
 			double distance = 0.00;
@@ -183,7 +185,7 @@ public class CaseService {
 			distance += Math.pow(caseDto.getTdsData() - dto.getTreatment().getTdsData(), 2);
 			distance += Math.pow(caseDto.getTempData() - dto.getTreatment().getTempData(), 2);
 			distance = Math.sqrt(distance);
-//			distance = (double)Math.round(distance*1000)/1000;
+			// distance = (double)Math.round(distance*1000)/1000;
 			dto.setDistance3(distance);
 			distance = 0;
 		}
@@ -199,6 +201,7 @@ public class CaseService {
 		}
 		return 0;
 	}
+
 	public static int compareInt(int d1, int d2) {
 		if (d1 < d2) {
 			return -1;

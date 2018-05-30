@@ -82,7 +82,9 @@
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span> <c:out value="${list.treatment.caseAuthor}"/></span> <span
 								class='glyphicon glyphicon-time' aria-hidden="true"></span> <span>2018-02-17</span>
 							<br><br>
-							 <span>案例相似度:</span><span><c:out value="${list.distance1}"/>%</span>
+							  <span>疾病相似度:</span><span><c:out value="${list.distance1}"/>%</span>
+							  <br>
+							  <span>环境相似度:</span><span><c:out value="${list.distance3}"/>%</span>
 							  <br>
 							 <span>诊断对象:</span><span><c:out value="${list.treatment.fishName}"/></span> 
 							 <br> 
