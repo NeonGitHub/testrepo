@@ -121,7 +121,7 @@
 								</div>
 								<div class="col-md-4">
 									<select name="characterA" class="myAselect">
-										<option value="">--请选择--</option>
+										<option value="0">--请选择--</option>
 										<c:forEach items="${behaveList}" var="behave">
 											<c:if test="${behave.behavePart=='体表'}">
 												<option value="${behave.behaveValue}">${behave.behaveDesc}</option>

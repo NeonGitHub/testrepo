@@ -184,11 +184,7 @@
 								<div class="input-group">
 									<textarea class="form-control" id="show" readonly="readonly"
 										style="resize: none; font-size: 14px; width: 600px; height: 100px; border-radius: 5px;"><c:forEach
-											items="${diseaseList2}" var="List">
-											<c:if test="${List.diseaseId==treatment.diseaseId}">
-												<c:out value="${List.diseaseShow}"></c:out>
-									</c:if>
-										</c:forEach></textarea>
+											items="${diseaseList2}" var="List"><c:if test="${List.diseaseId==treatment.diseaseId}"><c:out value="${List.diseaseShow}"></c:out></c:if></c:forEach></textarea>
 								</div>
 							</div>
 						</div>
@@ -207,11 +203,7 @@
 								<div class="input-group">
 									<textarea class="form-control" id="reason" readonly="readonly"
 										style="resize: none; font-size: 14px; width: 600px; height: 100px; border-radius: 5px;"><c:forEach
-											items="${diseaseList2}" var="List">
-											<c:if test="${List.diseaseId==treatment.diseaseId}">
-												<c:out value="${List.diseaseReason}"></c:out>
-									</c:if>
-										</c:forEach></textarea>
+											items="${diseaseList2}" var="List"><c:if test="${List.diseaseId==treatment.diseaseId}"><c:out value="${List.diseaseReason}"></c:out></c:if></c:forEach></textarea>
 								</div>
 							</div>
 						</div>

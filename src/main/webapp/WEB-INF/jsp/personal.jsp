@@ -142,7 +142,7 @@
 				<!--小屏幕下是隐藏此部分的-->
 				<div class="userHeadDiv">
 					<img class="img-circle img-thumbnail "
-						src="/graProject/images/${sessionScope.user.userPicture}" />
+						src="/graProject/img/headpic.JPG" />
 					<div class="userInfoDiv">
 						<!--用户ID-->
 

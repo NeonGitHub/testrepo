@@ -61,7 +61,7 @@
 						<li><a href="/graProject/admin/addFish">添加生物种类</a></li>
 					</ul></li>
 
-				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+				<li class="dropdown  active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
 						role="button" aria-haspopup="true" aria-expanded="false">
 						管理特征表现 <span class="caret"></span>
 					</a>
@@ -70,7 +70,7 @@
 						<li><a href="/graProject/admin/addBehave">添加特征表现</a></li>
 					</ul></li>
 
-				<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
 						role="button" aria-haspopup="true" aria-expanded="false">
 						管理案例 <span class="caret"></span>
 					</a>
@@ -94,8 +94,8 @@
 			<div class="col-xs-12 col-sm-9">
 				<div class="discuss">
 					<ul class="nav nav-tabs">
-						<li role="presentation" class="active"><a href="#">查看特征</a></li>
-						<li role="presentation"><a href="#">添加特征</a></li>
+						<li role="presentation"><a href="#">查看特征</a></li>
+						<li role="presentation"  class="active"><a href="#">添加特征</a></li>
 					</ul>
 				</div>
 

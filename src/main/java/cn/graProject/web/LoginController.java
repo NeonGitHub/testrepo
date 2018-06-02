@@ -10,8 +10,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -51,6 +54,22 @@ public class LoginController {
 		}
 		return "error";
 	}
+	
+	@RequestMapping(value="/login",method = RequestMethod.POST)
+	@ResponseBody
+	public String phoneLogin(@RequestBody User user, Model model) {
+		if (loginService.loginCompare(user.getUserEmail(), user.getUserPwd()) == 0) {
+			User deviceuser = loginService.findUser(user.getUserEmail());
+			// change database table user_info :
+			// ->change user_id to user_name (varchar)
+			// ->add colume user_id PRI (int)
+			model.addAttribute("user", deviceuser);
+			return "success" ;
+		}
+		return "error";
+	}
+	
+	
 	
 	@RequestMapping(value="/register")
 	public String userRegister(User user,Model model,@RequestParam("file") MultipartFile file,HttpServletRequest requset)throws IllegalStateException, IOException {

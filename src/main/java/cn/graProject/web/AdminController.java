@@ -51,7 +51,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin/{adminId}")
 	public String userLoginSuccess(Model model, @RequestParam int page, @RequestParam int pageSize) {
 		// 页码处理
-		int totalPage = pageService.getDataTotalPage(pageSize);
+		int totalPage = pageService.getUserTotalPage(pageSize);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("totalPage", totalPage);
 		List<User> userList = adminService.findAllUser(page, pageSize);

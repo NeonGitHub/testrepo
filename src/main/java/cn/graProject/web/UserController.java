@@ -1,5 +1,6 @@
 package cn.graProject.web;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -76,6 +77,24 @@ public class UserController {
 	}
 
 	/**
+	 * 手机查询 异步请求
+	 * 
+	 * @param httpSession
+	 * @return
+	 */
+	@RequestMapping(value = "/phone/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> phoneData(@PathVariable("id") String id) {
+		Device device = dataService.findNewData(id);
+		Map<String, Object> datajson=new HashMap<String, Object>();
+		datajson.put("time",device.getUploadTime().toString());
+		datajson.put("ph",device.getPhData());
+		datajson.put("tds",device.getTdsData());
+		datajson.put("temp",device.getTempData());
+		return datajson;
+	}
+
+	/**
 	 * 历史数据查询
 	 * 
 	 * @param httpSession
@@ -129,7 +148,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/caseAnalysis2/{caseId}/diseaseId/{diseaseId}")
-	public String caseAnalysisTwo(Model model, @PathVariable("caseId") int caseId,@PathVariable("diseaseId") int diseaseId) {
+	public String caseAnalysisTwo(Model model, @PathVariable("caseId") int caseId,
+			@PathVariable("diseaseId") int diseaseId) {
 		// 根据id找到案例并展示
 		TreatmentCase treatmentCase = caseService.findTreatmentCaseInfoById(caseId);
 		DiseaseCase diseaseCase = caseService.findDiseaseCaseInfoById(diseaseId);
