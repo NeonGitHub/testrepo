@@ -80,11 +80,11 @@
 						</div>
 						<div class="panel-body">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span> <c:out value="${list.treatment.caseAuthor}"/></span> <span
-								class='glyphicon glyphicon-time' aria-hidden="true"></span> <span>2018-02-17</span>
+								class='glyphicon glyphicon-time' aria-hidden="true"></span> <span>2018-05-17</span>
 							<br><br>
-							  <span>疾病相似度:</span><span><c:out value="${list.distance1}"/>%</span>
+							  <span>疾病相似度:</span><span><c:out value="${100-(list.distance1/2.98)}"/>%</span>
 							  <br>
-							  <span>环境相似度:</span><span><c:out value="${list.distance3}"/>%</span>
+							  <span>环境指数:</span><span><c:out value="${list.distance3}"/></span>
 							  <br>
 							 <span>诊断对象:</span><span><c:out value="${list.treatment.fishName}"/></span> 
 							 <br> 
