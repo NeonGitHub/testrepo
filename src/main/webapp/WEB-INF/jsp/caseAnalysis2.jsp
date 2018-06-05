@@ -12,7 +12,7 @@
 <meta name="author" content="">
 <link rel="icon" href="img/icon2.jpg">
 
-<title>智能水族箱-查看案例</title>
+<title>智能水族箱-案例分析</title>
 
 <link href="/graProject/css/private.css" rel="stylesheet">
 <!-- Bootstrap core CSS -->
@@ -40,7 +40,7 @@
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="#">首页</a></li>
-				<li><a href="/personal/${sessionScope.user.userId}">个人主页</a></li>
+				<li><a href="/graProject/personal/${sessionScope.user.userId}">个人主页</a></li>
 				<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
 						role="button" aria-haspopup="true" aria-expanded="false">
 						案例功能 <span class="caret"></span>
@@ -50,7 +50,7 @@
 						<li><a href="#">案例分析</a></li>
 						<li><a href="/graProject/caseAdd">添加案例</a></li>
 					</ul></li>
-				<li><a href="/graProject/newsList">通知及资讯</a></li>
+		
 			</ul>
 		</div>
 		<!-- /.nav-collapse -->
@@ -82,7 +82,7 @@
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span> <c:out value="${list.treatment.caseAuthor}"/></span> <span
 								class='glyphicon glyphicon-time' aria-hidden="true"></span> <span>2018-05-17</span>
 							<br><br>
-							  <span>疾病相似度:</span><span><c:out value="${100-(list.distance1/2.98)}"/>%</span>
+							  <span>疾病相似度:</span><span><c:out value="${list.distance1}"/>%</span>
 							  <br>
 							  <span>环境指数:</span><span><c:out value="${list.distance3}"/></span>
 							  <br>
@@ -108,7 +108,7 @@
 
 					<div class="userInfoDiv">
 						<!--用户ID-->
-						<h4>张景轩</h4>
+						<h4>${sessionScope.user.userId}</h4>
 						<div class="btn-group" role="group" aria-label="...">
 							<button type="button" class="btn btn-default">个人设置</button>
 							<button type="button" class="btn btn-default">注销</button>
@@ -116,11 +116,11 @@
 					</div>
 				</div>
 				<div class="list-group">
-					<a href="userhome.html" class="list-group-item text-center">个人主页</a>
-					<a href="#" class="list-group-item text-center">历史数据</a>
-					<a href="caseAnalysis.html" class="list-group-item text-center">案例分析</a>
-					<a href="caseList.html" class="list-group-item text-center active">查看案例</a>
-					<a href="caseAdd.html" class="list-group-item text-center">添加案例</a>
+					<a href="/graProject/personal/${sessionScope.user.userId}" class="list-group-item text-center">个人主页</a>
+					<a href="/graProject/historyList?page=1&pageSize=30" class="list-group-item text-center">历史数据</a>
+					<a href="/graProject/caseList?page=1&pageSize=10" class="list-group-item text-center">查看案例</a>
+					<a href="/graProject/caseAnalysis" class="list-group-item text-center active">案例分析</a>
+					<a href="/graProject/caseAdd" class="list-group-item text-center">添加案例</a>
 				</div>
 			</div>
 

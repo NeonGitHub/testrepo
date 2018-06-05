@@ -131,7 +131,8 @@ public class CaseService {
 						return compareInt(o1.getDistance2(), o2.getDistance2());
 					}
 				}else {
-					return compareDouble(o1.getDistance1(), o2.getDistance1());
+					//从大到小
+					return compareDouble(o2.getDistance1(), o1.getDistance1());
 				}
 			}
 		});
@@ -156,9 +157,8 @@ public class CaseService {
 			for (int j = 1; j < 9; j++) {
 				distance += Math.pow(x.getCharacterbyNum(j) - y.getCharacterbyNum(j), 2);
 			}
-			distance = Math.sqrt(distance);
+			distance = 100-Math.sqrt(distance)/2.98;	
 			distance = (double) Math.round(distance * 1000) / 1000;
-
 			// 还是用Map存放 key-病例ID value-距离
 			dismap.put(y.getDiseaseId(), distance);
 			distance = 0;
@@ -185,7 +185,7 @@ public class CaseService {
 			distance += Math.pow(caseDto.getTdsData() - dto.getTreatment().getTdsData(), 2);
 			distance += Math.pow(caseDto.getTempData() - dto.getTreatment().getTempData(), 2);
 			distance = Math.sqrt(distance);
-			// distance = (double)Math.round(distance*1000)/1000;
+			distance = (double)Math.round(distance*1000)/1000;
 			dto.setDistance3(distance);
 			distance = 0;
 		}

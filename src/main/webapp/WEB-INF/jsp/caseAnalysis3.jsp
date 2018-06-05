@@ -12,12 +12,11 @@
 <meta name="author" content="">
 <link rel="icon" href="/graProject/img/icon2.jpg">
 
-<title>智能水族箱-新闻资讯</title>
+<title>智能水族箱-案例分析</title>
+
 
 <link href="/graProject/css/private.css" rel="stylesheet">
-<!-- Bootstrap core CSS -->
 <link href="/graProject/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap theme -->
 <link href="/graProject/css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="/graProject/css/offcanvas.css" rel="stylesheet">
 
@@ -40,7 +39,7 @@
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="#">首页</a></li>
-				<li><a href="/personal/${sessionScope.user.userId}">个人主页</a></li>
+				<li><a href="/graProject/personal/${sessionScope.user.userId}">个人主页</a></li>
 				<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
 						role="button" aria-haspopup="true" aria-expanded="false">
 						案例功能 <span class="caret"></span>
@@ -50,7 +49,6 @@
 						<li><a href="#">案例分析</a></li>
 						<li><a href="/graProject/caseAdd">添加案例</a></li>
 					</ul></li>
-				<li><a href="/graProject/newsList">通知及资讯</a></li>
 			</ul>
 		</div>
 		<!-- /.nav-collapse -->
@@ -75,6 +73,7 @@
 					<h3>诊断情况</h3>
 				</div>
 				<div class="myAtreat">
+
 					<div class="col-md-3">
 						<span>案例编号</span>
 					</div>
@@ -100,7 +99,8 @@
 						<span>环境值</span>
 					</div>
 					<div class="col-md-9">
-						<p>ph值:${treatmentCase.phData} || tds值:${treatmentCase.tdsData}(ml/g) || 温度:${treatmentCase.tempData}°C</p>
+						<p>ph值:${treatmentCase.phData} || tds值:${treatmentCase.tdsData}(ml/g) ||
+							温度:${treatmentCase.tempData}°C</p>
 					</div>
 					<br>
 					<div class="col-md-3">
@@ -114,7 +114,7 @@
 						<span>疾病名称</span>
 					</div>
 					<div class="col-md-9">
-					    <p>${diseaseCase.diseaseName}</p>	
+						<p>${diseaseCase.diseaseName}</p>
 					</div>
 					<br>
 					<div class="col-md-3">
@@ -138,30 +138,92 @@
 						<p>${treatmentCase.treatment}</p>
 					</div>
 					<br>
-	
-					<div class="col-md-3">
-						<span>案例评价</span>
-					</div>
-					<div class="col-md-9">
-						<div class="input-group">
-							<textarea class="form-control"
-								style="resize: none; font-size: 14px; width: 600px; height: 100px; border-radius: 5px;"></textarea>
-						</div>
-					</div>
-					
-					
-					<br>
 					<div class="col-md-12">
 						<br>
 					</div>
-
 					<br>
+					<form action="/graProject/caseReview">
 
-					<div class="col-md-3 col-md-offset-6">
-						<button type="submit" class="btn btn-default">提交</button>
-						<button type="reset" class="btn btn-default">重置</button>
-					</div>
+						<div class="form-group">
+							<div class="col-md-3">
+								<span>本次诊断对象</span>
+							</div>
+							<div class="col-md-3">
+								<input type="hidden" name="caseAuthor" value="${sessionScope.user.userId}" />
+								<input type="text" readonly="readonly" name="fishName" value="${sessionScope.caseDto.fishName}"
+									class="form-control">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<br>
+						</div>
+
+						<div class="form-group">
+							<div class="col-md-3">
+								<span>本次环境值</span>
+							</div>
+							<div class="col-md-2">
+								<input type="text" name="phData" readonly="readonly" class="form-control"
+									value="${sessionScope.caseDto.phData}">
+							</div>
+							<div class="col-md-2">
+								<input type="text" name="tdsData" readonly="readonly" class="form-control"
+									value="${sessionScope.caseDto.tdsData}">
+							</div>
+							<div class="col-md-2">
+								<input type="text" name="tempData" readonly="readonly" class="form-control"
+									value="${sessionScope.caseDto.tempData}">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<br>
+						</div>
+						<br>
+
+						<div class="form-group">
+							<div class="col-md-3">
+								<span>本次疾病</span>
+							</div>
+							<div class="col-md-3">
+								<input type="text" readonly="readonly" name="diseaseName" value="${diseaseCase.diseaseName}"
+									class="form-control">
+							</div>
+							<input type="hidden" name="diseaseId" value="${diseaseCase.diseaseId}" />
+						</div>
+						<div class="col-md-12">
+							<br>
+						</div>
+
+
+						<br>
+						<div class="form-group">
+							<div class="col-md-3">
+								<span>治疗方案补充</span>
+							</div>
+							<div class="col-md-9">
+								<div class="input-group">
+									<textarea class="form-control" name="treatment"
+										style="resize: none; font-size: 14px; width: 600px; height: 100px; border-radius: 5px;">${treatmentCase.treatment}</textarea>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="col-md-12">
+							<br>
+						</div>
+						<br>
+						<div class="col-md-12 col-md-offset-3">
+							<p>治愈案例是否有用?(有用将被提交到后台进行完善)</p>
+						</div>
 				</div>
+
+
+				<div class="col-md-6 col-md-offset-4">
+					<button type="submit" class="btn btn-success">是的,有用</button>
+					<button type="button" onclick="javascript:window.history.back(-1);"
+						class="btn btn-danger">没有,再看看</button>
+				</div>7
+				<form>
 			</div>
 			<!--/.col-xs-12.col-sm-9-->
 
@@ -173,7 +235,7 @@
 
 					<div class="userInfoDiv">
 						<!--用户ID-->
-						<h4>张景轩</h4>
+						<h4>${sessionScope.user.userId}</h4>
 						<div class="btn-group" role="group" aria-label="...">
 							<button type="button" class="btn btn-default">个人设置</button>
 							<button type="button" class="btn btn-default">注销</button>
@@ -181,11 +243,11 @@
 					</div>
 				</div>
 				<div class="list-group">
-					<a href="userhome.html" class="list-group-item text-center">个人主页</a>
-					<a href="#" class="list-group-item text-center">历史数据</a>
-					<a href="caseAnalysis.html" class="list-group-item text-center active">案例分析</a>
-					<a href="caseList.html" class="list-group-item text-center">查看案例</a>
-					<a href="caseAdd.html" class="list-group-item text-center">添加案例</a>
+					<a href="/graProject/personal/${sessionScope.user.userId}" class="list-group-item text-center">个人主页</a>
+					<a href="/graProject/historyList?page=1&pageSize=30" class="list-group-item text-center">历史数据</a>
+					<a href="/graProject/caseList?page=1&pageSize=10" class="list-group-item text-center">查看案例</a>
+					<a href="/graProject/caseAnalysis" class="list-group-item text-center active">案例分析</a>
+					<a href="/graProject/caseAdd" class="list-group-item text-center">添加案例</a>
 				</div>
 			</div>
 

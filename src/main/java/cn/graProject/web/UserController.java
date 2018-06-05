@@ -140,14 +140,21 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/caseAnalysisSubmit")
-	public String caseAnalysisOne(Model model, CaseDto caseDto) {
-		// 分析比对案例相似度，返回一个列表，前10个analysisDto
+	public String caseAnalysisOne(HttpSession httpSession,Model model, CaseDto caseDto) {
 		List<AnalysisDto> analysisDtoList = caseService.analysisCase(caseDto);
+		httpSession.setAttribute("caseDto", caseDto);
 		model.addAttribute("analysisDtoList", analysisDtoList);
 		// 跳转到“分析”页面 取前10个相似案例
 		return "caseAnalysis2";
 	}
 
+	/**
+	 * 案例分析(3) ->显示案例详情,并评分
+	 * @param model
+	 * @param caseId
+	 * @param diseaseId
+	 * @return
+	 */
 	@RequestMapping(value = "/caseAnalysis2/{caseId}/diseaseId/{diseaseId}")
 	public String caseAnalysisTwo(Model model, @PathVariable("caseId") int caseId,
 			@PathVariable("diseaseId") int diseaseId) {
@@ -158,6 +165,12 @@ public class UserController {
 		model.addAttribute("treatmentCase", treatmentCase);
 		model.addAttribute("diseaseCase", diseaseCase);
 		return "caseAnalysis3";
+	}
+	
+	@RequestMapping(value="/caseReview")
+	public String caseAnalysisThree(TreatmentCase treatmentCheck, Model model) {
+		caseService.addTreatmentCheck(treatmentCheck);
+		return "redirect:/caseAnalysis";
 	}
 
 	/**
