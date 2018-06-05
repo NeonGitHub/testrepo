@@ -39,7 +39,7 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="home.html">首页</a></li>
+				<li><a href="/graProject">首页</a></li>
 				<li><a href="/graProject/personal/${sessionScope.user.userId}">个人主页</a></li>
 				<li class="dropdown activex"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
 						role="button" aria-haspopup="true" aria-expanded="false">
@@ -50,7 +50,6 @@
 						<li><a href="/graProject/caseAnalysis">案例分析</a></li>
 						<li><a href="#">添加案例</a></li>
 					</ul></li>
-				<li><a href="/graProject/newslist">通知及资讯</a></li>
 			</ul>
 		</div>
 		<!-- /.nav-collapse -->
@@ -211,7 +210,7 @@
 					</div>
 				</div>
 				<div class="list-group">
-					<a href="/graProject/persional/{sessionScope.user.userId}" class="list-group-item text-center">个人主页</a>
+					<a href="/graProject/persional/${sessionScope.user.userId}" class="list-group-item text-center">个人主页</a>
 					<a href="/graProject/historyList?page=1&pageSize=30" class="list-group-item text-center">历史数据</a>
 					<a href="/graProject/caseAnalysis" class="list-group-item text-center">案例分析</a>
 					<a href="/graProject/caseList?page=1&pageSize=10" class="list-group-item text-center">查看案例</a>

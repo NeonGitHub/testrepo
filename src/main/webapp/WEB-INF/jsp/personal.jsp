@@ -33,18 +33,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/graProject/js/jquery-3.3.1.min.js"></script>
 <script src="/graProject/js/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
 <script src="/graProject/js/offcanvas.js"></script>
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -62,7 +51,7 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="#">首页</a></li>
+				<li><a href="/graProject">首页</a></li>
 				<li class="active"><a href="#">个人主页</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -72,7 +61,6 @@
 						<li><a href="/graProject/caseAnalysis">案例分析</a></li>
 						<li><a href="/graProject/addCase">添加案例</a></li>
 					</ul></li>
-				<li><a href="/graProject/newsList">通知及资讯</a></li>
 			</ul>
 		</div>
 		<!-- /.nav-collapse -->

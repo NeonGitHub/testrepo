@@ -40,7 +40,7 @@
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="#">首页</a></li>
-				<li><a href="/personal/${sessionScope.user.userId}">个人主页</a></li>
+				<li><a href="/graProject/personal/${sessionScope.user.userId}">个人主页</a></li>
 				<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
 						role="button" aria-haspopup="true" aria-expanded="false">
 						案例功能 <span class="caret"></span>
@@ -50,7 +50,7 @@
 						<li><a href="#">案例分析</a></li>
 						<li><a href="/graProject/caseAdd">添加案例</a></li>
 					</ul></li>
-				<li><a href="/graProject/newsList">通知及资讯</a></li>
+				
 			</ul>
 		</div>
 		<!-- /.nav-collapse -->
@@ -300,10 +300,10 @@
 					</div>
 				</div>
 				<div class="list-group">
-					<a href="graProject/personal/${sessionScope.user.userId}" class="list-group-item text-center">个人主页</a>
+					<a href="/graProject/personal/${sessionScope.user.userId}" class="list-group-item text-center">个人主页</a>
 					<a href="/graProject/historyList?page=1&pageSize=30" class="list-group-item text-center">历史数据</a>
-					<a href="/graProject/caseAnalysis" class="list-group-item text-center active">案例分析</a>
 					<a href="/graProject/caseList?page=1&pageSize=10" class="list-group-item text-center">查看案例</a>
+					<a href="/graProject/caseAnalysis" class="list-group-item text-center active">案例分析</a>
 					<a href="/graProject/caseAdd" class="list-group-item text-center">添加案例</a>
 				</div>
 			</div>
