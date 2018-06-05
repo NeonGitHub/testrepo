@@ -136,7 +136,7 @@
 
 						<h4>${sessionScope.user.userId}</h4>
 						<div class="btn-group" role="group" aria-label="...">
-							<button type="button" onclick="window.location.href = '/graProject/warning'" class="btn btn-default">个人设置</button>
+							<button type="button" onclick="window.location.href = '/graProject/warning/${sessionScope.user.userDev}'" class="btn btn-default">个人设置</button>
 							<button type="button" class="btn btn-default">注销</button>
 						</div>
 					</div>
@@ -163,11 +163,30 @@
 	</div>
 	<!--/.container-->
 	<script type="text/javascript">
-	
+	$(document).ready(
+			function() {
+				
+				var ph=Number('${device.phData}');
+				var tds=Number('${device.tdsData}');
+				var temp=Number('${device.tempData}');
+				var phMax=Number('${sessionScope.dw.phMax}');
+				var phMin=Number('${sessionScope.dw.phMin}');
+				var tdsMax=Number('${sessionScope.dw.tdsMax}');
+				var tdsMin=Number('${sessionScope.dw.tdsMin}');
+				var tempMax=Number('${sessionScope.dw.tempMax}');				
+				var tempMin=Number('${sessionScope.dw.tempMin}');
+				if(ph>phMax||ph<phMin){
+					alert("警告:ph值超出预设范围！");
+				}
+				if(tds>tdsMax||tds<tdsMin){
+					alert("警告:tds值超出预设范围！");
+				}
+				if(temp>tempMax||temp<tempMin){
+					alert("警告:temp值超出预设范围！");
+				}
+			});
 	</script>
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-
+	
 </body>
 
 </html>

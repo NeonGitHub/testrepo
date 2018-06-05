@@ -8,12 +8,19 @@
 		device_data(device_id,ph_data,tds_data,temp_data)
 		values(#{deviceId},#{phData},#{tdsData},#{tempData})
 	</insert>
-	
-	<insert id="addWarningSettings" parameterType="cn.graProject.entity.DeviceWarn">
-		insert into
-		device_warn(device_id,ph_max,ph_min,tds_max,tds_min,temp_max,temp_min)
-		values(#{deviceId},#{phMax},#{phMin},#{tdsMax},#{tdsMin},#{tempMax},#{tempMin})
-	</insert>
+		
+	<update id="addWarningSettings" parameterType="cn.graProject.entity.DeviceWarn">
+		update device_warn
+		set
+		ph_max=#{phMax},
+		ph_min=#{phMin},
+		tds_max=#{tdsMax},
+		tds_min=#{tdsMin},
+		temp_max=#{tempMax},
+		temp_min=#{tempMin}
+		where
+		device_id=#{deviceId}
+	</update>
 	
 
 	<select id="queryNewDataById" resultType="Device" parameterType="String">
@@ -28,6 +35,10 @@
 	<select id="findDataByPage" resultType="Device">
 		select * from device_data
 		where device_id=#{deviceId} limit #{offset},#{limit}
+	</select>
+	
+	<select id="findDeviceWarn" resultType="DeviceWarn" parameterType="String">
+		select * from device_warn where device_id=#{deviceId}
 	</select>
 
 </mapper>

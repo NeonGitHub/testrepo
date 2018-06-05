@@ -6,12 +6,19 @@
 	<select id="queryUserByEmail" resultType="User" parameterType="String">
 		select * from user_info where user_email=#{userEmail}
 	</select>
-	
+	<select id="findDeviceWarn" resultType="DeviceWarn" parameterType="String">
+		select * from device_warn where device_id=#{deviceId}
+	</select>
 	<insert id="userRegister" parameterType="cn.graProject.entity.User">
 	insert into user_info(user_id,user_pwd,user_dev,user_email,user_picture,user_permission) 
 	values(#{userId},#{userPwd},#{userDev},#{userEmail},#{userPicture},#{userPermission})
 	</insert>
-
+	
+	<insert id="addWarningSettings" parameterType="cn.graProject.entity.DeviceWarn">
+		insert into
+		device_warn(device_id,ph_max,ph_min,tds_max,tds_min,temp_max,temp_min)
+		values(#{deviceId},#{phMax},#{phMin},#{tdsMax},#{tdsMin},#{tempMax},#{tempMin})
+	</insert>
 
 
 </mapper>

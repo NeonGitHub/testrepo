@@ -1,5 +1,6 @@
 package cn.graProject.dao;
 
+import cn.graProject.entity.DeviceWarn;
 import cn.graProject.entity.User;
 
 public interface LoginDao {
@@ -13,5 +14,9 @@ public interface LoginDao {
 	User queryUserByEmail(String userEmail) ;
 
 	void userRegister(User user);
+
+	void addWarningSettings(DeviceWarn dw);
+
+	DeviceWarn findDeviceWarn(String userDev);
 	
 }

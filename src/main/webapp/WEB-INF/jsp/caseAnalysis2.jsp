@@ -73,7 +73,7 @@
 				</div>
 
 				<c:forEach items="${analysisDtoList}" var="list">
-				<a class="myAlabel" href="/graProject/caseAnalysis2/${list.treatment.caseId}/diseaseId/${list.treatment.diseaseId}">
+				<a class="myAlabel" href="/graProject/caseAnalysis2?caseId=${list.treatment.caseId}&diseaseId=${list.treatment.diseaseId}&d1=${list.distance1}&d3=${list.distance3}">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">案例编号<c:out value="${list.treatment.caseId}"/></h3>

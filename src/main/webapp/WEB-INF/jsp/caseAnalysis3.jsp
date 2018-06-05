@@ -135,7 +135,7 @@
 						<span>治愈方案</span>
 					</div>
 					<div class="col-md-9">
-						<p>${treatmentCase.treatment}</p>
+						<p id="treatment1">${treatmentCase.treatment}</p>
 					</div>
 					<br>
 					<div class="col-md-12">
@@ -202,7 +202,7 @@
 							</div>
 							<div class="col-md-9">
 								<div class="input-group">
-									<textarea class="form-control" name="treatment"
+									<textarea class="form-control" name="treatment" id="treatment2"
 										style="resize: none; font-size: 14px; width: 600px; height: 100px; border-radius: 5px;">${treatmentCase.treatment}</textarea>
 								</div>
 							</div>
@@ -219,10 +219,10 @@
 
 
 				<div class="col-md-6 col-md-offset-4">
-					<button type="submit" class="btn btn-success">是的,有用</button>
+					<button id="submitCase" type="submit" class="btn btn-success">是的,有用</button>
 					<button type="button" onclick="javascript:window.history.back(-1);"
 						class="btn btn-danger">没有,再看看</button>
-				</div>7
+				</div>
 				<form>
 			</div>
 			<!--/.col-xs-12.col-sm-9-->
@@ -264,5 +264,24 @@
 	<!--/.container-->
 
 </body>
-
+<!-- javascript -->
+<script type="text/javascript">
+window.onload = function(){
+	var d1='${d1}';
+	var d3='${d3}';
+	var fish1='${treatmentCase.fishName}';
+	var fish2='${sessionScope.caseDto.fishName}';
+	var mysubmit = document.getElementById("submitCase");
+		mysubmit.onclick = function(event) {
+			var treatment1=$("#treatment1").text();
+			var treatment2=$("#treatment2").val();
+			if (d1==100&&d3==0&&fish1==fish2&&treatment1==treatment2) {
+				alert("完全相同，不用添加！");
+				 event.preventDefault();
+			} else  {
+				alert("提交成功！");
+			}
+		}
+	}
+</script>
 </html>

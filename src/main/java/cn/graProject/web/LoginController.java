@@ -19,11 +19,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.graProject.entity.Device;
+import cn.graProject.entity.DeviceWarn;
 import cn.graProject.entity.User;
 import cn.graProject.service.LoginService;
 
 @Controller
-@SessionAttributes("user")
+@SessionAttributes(value={"user","dw"})
 public class LoginController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -44,10 +45,9 @@ public class LoginController {
 	public String userLogin(User user, Model model) {
 		if (loginService.loginCompare(user.getUserEmail(), user.getUserPwd()) == 0) {
 			User deviceuser = loginService.findUser(user.getUserEmail());
-			// change database table user_info :
-			// ->change user_id to user_name (varchar)
-			// ->add colume user_id PRI (int)
+			DeviceWarn dw=loginService.findDeviceWarn(deviceuser.getUserDev());
 			model.addAttribute("user", deviceuser);
+			model.addAttribute("dw", dw);
 			return "redirect:/personal/" + deviceuser.getUserId();
 		}
 		if (loginService.loginCompare(user.getUserEmail(), user.getUserPwd()) == 1) {
@@ -91,7 +91,11 @@ public class LoginController {
 			System.out.println(realPath);
 			file.transferTo(new File(realPath+File.separator+filename));
 			
+			DeviceWarn dw=new DeviceWarn();
+			dw.setDeviceId(user.getUserDev());
+			loginService.addUserDateWarn(dw);
 			loginService.userRegister(user);
+			model.addAttribute("dw", dw);
 			model.addAttribute("user", user);
 			return "redirect:/personal/" + user.getUserId();
 		} else {

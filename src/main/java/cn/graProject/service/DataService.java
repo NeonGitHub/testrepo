@@ -66,4 +66,8 @@ public class DataService {
 		dataDao.addWarningSettings(dw);
 	}
 
+	public DeviceWarn findDeviceWarn(String userDev) {
+		return dataDao.findDeviceWarn(userDev);
+	}
+
 }

@@ -155,13 +155,13 @@ public class UserController {
 	 * @param diseaseId
 	 * @return
 	 */
-	@RequestMapping(value = "/caseAnalysis2/{caseId}/diseaseId/{diseaseId}")
-	public String caseAnalysisTwo(Model model, @PathVariable("caseId") int caseId,
-			@PathVariable("diseaseId") int diseaseId) {
+	@RequestMapping(value = "/caseAnalysis2")
+	public String caseAnalysisTwo(int caseId,int diseaseId,double d1,double d3,Model model) {
 		// 根据id找到案例并展示
 		TreatmentCase treatmentCase = caseService.findTreatmentCaseInfoById(caseId);
 		DiseaseCase diseaseCase = caseService.findDiseaseCaseInfoById(diseaseId);
-
+		model.addAttribute("d1",d1);
+		model.addAttribute("d3",d3);
 		model.addAttribute("treatmentCase", treatmentCase);
 		model.addAttribute("diseaseCase", diseaseCase);
 		return "caseAnalysis3";
@@ -242,15 +242,17 @@ public class UserController {
 		return "redirect:/caseAdd";
 	}
 	
-	@RequestMapping(value="/warning")
-	public String personWarining(Model model){
-		//TODO 
+	@RequestMapping(value="/warning/{userDev}")
+	public String personWarining(@PathVariable("userDev") String userDev,Model model,HttpSession httpSession){
+		DeviceWarn dw=dataService.findDeviceWarn(userDev);
+		httpSession.setAttribute("dw", dw);
 		return "warning";
 	}
 	
 	@RequestMapping(value="/settings/{userId}")
-	public String personSetting(@PathVariable("userId") String userId,DeviceWarn dw){
+	public String personSetting(@PathVariable("userId") String userId,DeviceWarn dw,Model model,HttpSession httpSession){
 		dataService.addWarningSettings(dw);
+		httpSession.setAttribute("dw",dw);
 		return "redirect:/personal/" + userId;
 	}
 }

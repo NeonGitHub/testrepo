@@ -11,7 +11,7 @@
 <meta name="author" content="">
 <link rel="icon" href="img/icon2.jpg">
 
-<title>智能水族箱-新闻资讯</title>
+<title>智能水族箱-个人设置</title>
 
 
 <link href="/graProject/css/private.css" rel="stylesheet">
@@ -75,10 +75,10 @@
 								<span>ph值预警</span>
 							</div>
 							<div class="col-md-2">
-								<input name="phMax" type="text" placeholder="最大值" class="form-control">
+								<input name="phMax" type="text" placeholder="最大值" class="form-control"  value="${dw.phMax}">
 							</div>
 							<div class="col-md-2">
-								<input name="phMin" type="text" placeholder="最小值" class="form-control">
+								<input name="phMin" type="text" placeholder="最小值" class="form-control" value="${dw.phMin}">
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -90,10 +90,10 @@
 								<span>tds值预警</span>
 							</div>
 							<div class="col-md-2">
-								<input name="tdsMax" type="text" placeholder="最大值" class="form-control">
+								<input name="tdsMax" type="text" placeholder="最大值" class="form-control" value="${dw.tdsMax}">
 							</div>
 							<div class="col-md-2">
-								<input name="tdsMin" type="text" placeholder="最小值" class="form-control">
+								<input name="tdsMin" type="text" placeholder="最小值" class="form-control" value="${dw.tdsMin}">
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -105,10 +105,10 @@
 								<span>温度预警</span>
 							</div>
 							<div class="col-md-2">
-								<input name="tempMax" type="text" placeholder="最大值" class="form-control">
+								<input name="tempMax" type="text" placeholder="最大值" class="form-control" value="${dw.tempMax}">
 							</div>
 							<div class="col-md-2">
-								<input name="tempMin" type="text" placeholder="最小值" class="form-control">
+								<input name="tempMin" type="text" placeholder="最小值" class="form-control" value="${dw.tempMin}">
 							</div>
 						</div>
 						<div class="col-md-12">

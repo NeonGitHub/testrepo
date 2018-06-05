@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.graProject.dao.LoginDao;
+import cn.graProject.entity.DeviceWarn;
 import cn.graProject.entity.User;
 
 @Service
@@ -38,6 +39,14 @@ public class LoginService {
 	public void userRegister(User user) {
 		loginDao.userRegister(user);
 		
+	}
+
+	public void addUserDateWarn(DeviceWarn dw) {
+		loginDao.addWarningSettings(dw);
+	}
+
+	public DeviceWarn findDeviceWarn(String userDev) {
+		return loginDao.findDeviceWarn(userDev);
 	}
 
 }

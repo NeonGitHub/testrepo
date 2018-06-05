@@ -40,4 +40,6 @@ public interface DataDao {
 
 	void addWarningSettings(DeviceWarn dw);
 
+	DeviceWarn findDeviceWarn(String userDev);
+
 }
