@@ -44,11 +44,13 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">案例功能 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="signin.html">查看案例</a></li>
-						<li><a href="signin.html">案例分析</a></li>
-						<li><a href="signin.html">添加案例</a></li>
+						<li><a href="join">查看案例</a></li>
+						<li><a href="join">案例分析</a></li>
+						<li><a href="join">添加案例</a></li>
 					</ul></li>
-				<li><a href="sigin.html">社交资讯</a></li>
+				<li><a href="join">社交资讯</a></li>
+				<li><a href="signup">注册</a></li>
+				<li><a href="join">登录</a></li>
 			</ul>
 		</div>
 		<!-- /.nav-collapse -->
@@ -85,7 +87,7 @@
 						<h1>智能水族箱</h1>
 						<p>轻松养鱼，快乐养鱼。</p>
 						<p>
-							<a class="btn btn-lg btn-primary" href="signin.html"
+							<a class="btn btn-lg btn-primary" href="join"
 								role="button">立刻加入我们</a>
 						</p>
 					</div>
@@ -99,7 +101,7 @@
 						<h1>智能水族箱</h1>
 						<p>轻松养鱼，快乐养鱼。</p>
 						<p>
-							<a class="btn btn-lg btn-primary" href="signin.html"
+							<a class="btn btn-lg btn-primary" href="join"
 								role="button">立刻加入我们</a>
 						</p>
 					</div>

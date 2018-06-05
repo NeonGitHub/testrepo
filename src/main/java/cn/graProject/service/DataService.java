@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import cn.graProject.dao.DataDao;
 import cn.graProject.entity.Device;
+import cn.graProject.entity.DeviceWarn;
 
 @Service
 public class DataService {
@@ -59,6 +60,10 @@ public class DataService {
 	public List<Device> findDataByPage(String userDev, int page, int pageSize) {
 		int page1=(page-1)*pageSize;
 		return dataDao.findDataByPage(userDev,page1,pageSize);
+	}
+
+	public void addWarningSettings(DeviceWarn dw) {
+		dataDao.addWarningSettings(dw);
 	}
 
 }

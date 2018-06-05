@@ -38,7 +38,7 @@
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="home.html">首页</a></li>
-				<li><a href="userhome.html">个人主页</a></li>
+				<li class="active"><a href="userhome.html">个人主页</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
 						role="button" aria-haspopup="true" aria-expanded="false">
 						案例功能 <span class="caret"></span>
@@ -67,11 +67,9 @@
 					<h3>个人设置</h3>
 				</div>
 				<div class="myAtreat">
-					<form action="/graProject/warning">
-
+					<form action="/graProject/settings/${sessionScope.user.userId}">
 						<br>
-
-
+                        <input name="deviceId" type="hidden"  value="${sessionScope.user.userDev}"  class="form-control">
 						<div class="form-group">
 							<div class="col-md-3">
 								<span>ph值预警</span>
@@ -133,11 +131,11 @@
 				<!--小屏幕下是隐藏此部分的-->
 				<div class="userHeadDiv">
 					<!--用户头像-->
-					<img class="img-circle img-thumbnail " src="img/headpic.JPG" />
+					<img class="img-circle img-thumbnail " src="/graProject/img/headpic.JPG" />
 
 					<div class="userInfoDiv">
 						<!--用户ID-->
-						<h4>张景轩</h4>
+						<h4>${sessionScope.user.userId}</h4>
 						<div class="btn-group" role="group" aria-label="...">
 							<button type="button" class="btn btn-default">个人设置</button>
 							<button type="button" class="btn btn-default">注销</button>
@@ -145,11 +143,11 @@
 					</div>
 				</div>
 				<div class="list-group">
-					<a href="userhome.html" class="list-group-item text-center">个人主页</a>
+					<a href="userhome.html" class="list-group-item text-center active">个人主页</a>
 					<a href="#" class="list-group-item text-center">历史数据</a>
 					<a href="caseAnalysis.html" class="list-group-item text-center">案例分析</a>
 					<a href="caseList.html" class="list-group-item text-center">查看案例</a>
-					<a href="caseAdd.html" class="list-group-item text-center active">添加案例</a>
+					<a href="caseAdd.html" class="list-group-item text-center">添加案例</a>
 				</div>
 			</div>
 

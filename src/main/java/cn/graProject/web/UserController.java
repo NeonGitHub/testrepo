@@ -23,6 +23,7 @@ import cn.graProject.dto.AnalysisDto;
 import cn.graProject.dto.CaseDto;
 import cn.graProject.entity.Behave;
 import cn.graProject.entity.Device;
+import cn.graProject.entity.DeviceWarn;
 import cn.graProject.entity.DiseaseCase;
 import cn.graProject.entity.Fish;
 import cn.graProject.entity.TreatmentCase;
@@ -140,7 +141,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/caseAnalysisSubmit")
 	public String caseAnalysisOne(Model model, CaseDto caseDto) {
-		// TO DO 分析比对案例相似度，返回一个列表，前10个analysisDto
+		// 分析比对案例相似度，返回一个列表，前10个analysisDto
 		List<AnalysisDto> analysisDtoList = caseService.analysisCase(caseDto);
 		model.addAttribute("analysisDtoList", analysisDtoList);
 		// 跳转到“分析”页面 取前10个相似案例
@@ -227,5 +228,16 @@ public class UserController {
 		caseService.addTreatmentCheck(treatmentCheck);
 		return "redirect:/caseAdd";
 	}
-
+	
+	@RequestMapping(value="/warning")
+	public String personWarining(Model model){
+		//TODO 
+		return "warning";
+	}
+	
+	@RequestMapping(value="/settings/{userId}")
+	public String personSetting(@PathVariable("userId") String userId,DeviceWarn dw){
+		dataService.addWarningSettings(dw);
+		return "redirect:/personal/" + userId;
+	}
 }

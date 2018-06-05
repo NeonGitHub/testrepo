@@ -28,6 +28,17 @@ PRIMARY KEY (data_id),
 key idx_dev(device_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='设备表';
 
+CREATE TABLE device_warn(
+`device_id` varchar(20) NOT NULL COMMENT '设备号',
+`ph_max` double NOT NULL COMMENT 'PH值最大',
+`ph_min` double NOT NULL COMMENT 'PH值最小',
+`tds_max` double NOT NULL COMMENT 'TDS值最大',
+`tds_min` double NOT NULL COMMENT 'TDS值最小',
+`temp_max` double NOT NULL COMMENT '温度值最大',
+`temp_min` double NOT NULL COMMENT '温度值最小',
+PRIMARY KEY (device_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='设备警告表';
+
 CREATE TABLE disease_desc(
 `disease_id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '数据记录自增主键',
 `disease_name` varchar(10) NOT NULL COMMENT '疾病名称',

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import cn.graProject.entity.Device;
+import cn.graProject.entity.DeviceWarn;
 
 public interface DataDao {
 	
@@ -36,5 +37,7 @@ public interface DataDao {
 	 * @return
 	 */
 	List<Device> findDataByPage(@Param("deviceId") String deivceId,@Param("offset") int offset,@Param("limit") int limit);
+
+	void addWarningSettings(DeviceWarn dw);
 
 }

@@ -35,6 +35,10 @@ public class LoginController {
 	public String userSingIn() {
 		return "forward:signIn.jsp";
 	}
+	@RequestMapping("/signup")
+	public String userSingUp() {
+		return "forward:register.jsp";
+	}
 
 	@RequestMapping("/signin")
 	public String userLogin(User user, Model model) {

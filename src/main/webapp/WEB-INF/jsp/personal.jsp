@@ -148,7 +148,7 @@
 
 						<h4>${sessionScope.user.userId}</h4>
 						<div class="btn-group" role="group" aria-label="...">
-							<button type="button" class="btn btn-default">个人设置</button>
+							<button type="button" onclick="window.location.href = '/graProject/warning'" class="btn btn-default">个人设置</button>
 							<button type="button" class="btn btn-default">注销</button>
 						</div>
 					</div>
@@ -174,7 +174,9 @@
 
 	</div>
 	<!--/.container-->
-
+	<script type="text/javascript">
+	
+	</script>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 
