@@ -78,9 +78,8 @@ public class CaseService {
 		desc.setCharacterG(caseDto.getCharacterG());
 		desc.setCharacterH(caseDto.getCharacterH());
 		List<DiseaseDesc> descList = caseDao.findAllDiseaseDesc();
-		Map<Integer, Double> dismap = new HashMap<Integer, Double>();
-		
 		//进行knn比较疾病特征值
+		Map<Integer, Double> dismap = new HashMap<Integer, Double>();
 		dismap = calculateKnn(desc, descList);
 		//排序
 		List<Map.Entry<Integer, Double>> list = new ArrayList<Map.Entry<Integer, Double>>(dismap.entrySet());
@@ -90,13 +89,8 @@ public class CaseService {
 				return o1.getValue().compareTo(o2.getValue());
 			}
 		});
-		//新建一个dto 和list
+		//新建一个dto 的list
 		List<AnalysisDto> aftersortList = new ArrayList<AnalysisDto>();
-		
-		/*
-		 * for (Map.Entry<Integer, Double> mapping : list) {
-		 * System.out.println(mapping.getKey() + ":" + mapping.getValue()); }
-		 */
 		// 用list保存要展示的前10个 analysisDto
 		int len=0;
 		if(list.size()<10) {
@@ -105,16 +99,17 @@ public class CaseService {
 			len=10;
 		}
 		for (int num = 0; num < len; num++) {
-			//化成百分比
-//			analysisDto.setDistance1(100 - (double)Math.round(list.get(num).getValue() * 1000) / 1000);
 			List<TreatmentCase> caseList=caseDao.findTreatmentCaseListById(list.get(num).getKey());
 			for(int count=0;count<caseList.size();count++) {
 				AnalysisDto analysisDto = new AnalysisDto();
 				analysisDto.setDistance1(list.get(num).getValue());
 				//list.get(num).getKey()是疾病编号！！
-				// TODO bug
 				analysisDto.setTreatment(caseList.get(count));
-				aftersortList.add(analysisDto);			
+				if(aftersortList.size()<10){
+					aftersortList.add(analysisDto);
+				}else{
+					break;
+				}
 			}		
 		}
 		//进行鱼种 环境值计算距离

@@ -29,12 +29,12 @@
 	</select>
 
 	<select id="queryAllDataById" resultType="Device" parameterType="String">
-		select * from device_data where device_id=#{deviceId}
+		select * from device_data where device_id=#{deviceId} 
 	</select>
 
 	<select id="findDataByPage" resultType="Device">
 		select * from device_data
-		where device_id=#{deviceId} limit #{offset},#{limit}
+		where device_id=#{deviceId} order by data_id desc limit #{offset},#{limit} 
 	</select>
 	
 	<select id="findDeviceWarn" resultType="DeviceWarn" parameterType="String">

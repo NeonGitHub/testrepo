@@ -24,6 +24,9 @@ public class DataService {
 	private DataDao dataDao;
 	
 	public void upLoadData(String deviceId,double temp,double tds,double ph) {
+		if(temp==85&&tds==0&&ph==0){
+			return;
+		}
 		Device device=new Device();
 		device.setDeviceId(deviceId);
 		device.setTempData(temp);

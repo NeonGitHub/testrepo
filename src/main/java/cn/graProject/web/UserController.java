@@ -87,8 +87,16 @@ public class UserController {
 	@ResponseBody
 	public Map<String, Object> phoneData(@PathVariable("id") String id) {
 		Device device = dataService.findNewData(id);
+		DeviceWarn dw=dataService.findDeviceWarn(id);
 		Map<String, Object> datajson=new HashMap<String, Object>();
-		datajson.put("time",device.getUploadTime().toString());
+		long time=device.getUploadTime().getTime();
+		datajson.put("phMax", dw.getPhMax());
+		datajson.put("phMin", dw.getPhMin());
+		datajson.put("tdsMax", dw.getTdsMax());
+		datajson.put("tdsMin", dw.getTdsMin());
+		datajson.put("tempMax", dw.getTempMax());
+		datajson.put("tempMin", dw.getTempMin());
+		datajson.put("time",time);
 		datajson.put("ph",device.getPhData());
 		datajson.put("tds",device.getTdsData());
 		datajson.put("temp",device.getTempData());

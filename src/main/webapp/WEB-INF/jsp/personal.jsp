@@ -81,12 +81,12 @@
 				<script src="/graProject/js/history.js"></script>
 				</div>
 
-				<h3>数据上传时间：${device.uploadTime}</h3>
+				<h3>数据上传时间:<fmt:formatDate value="${device.uploadTime}" pattern="yyyy-MM-dd HH:mm:ss" /> </h3>
 				<div class="row">
 					<div class="col-xs-6 col-lg-4">
 						<h2>PH值</h2>
 						<p>您的水族箱当前PH值为：
-						<h4 style="color: red;">${device.phData}</h4>
+						<h4 id="phWarn" style="color: green;">${device.phData}</h4>
 						</p>
 						<p>氢离子浓度指数（hydrogen ion concentration）是指溶液中氢离子的总数和总物质的量的比。</p>
 						<p>
@@ -98,7 +98,7 @@
 					<div class="col-xs-6 col-lg-4">
 						<h2>TDS值</h2>
 						<p>您的水族箱当前TDS值为：
-						<h4 style="color: red;">${device.tdsData}mg/L</h4>
+						<h4 id="tdWarn" style="color: green;">${device.tdsData}mg/L</h4>
 						</p>
 						<p>总溶解固体（Total dissolved
 							solids）,测量单位为毫克/升（mg/L）,它表明1升水中溶有多少毫克溶解性固体。</p>
@@ -111,7 +111,7 @@
 					<div class="col-xs-6 col-lg-4">
 						<h2>温度</h2>
 						<p>您的水族箱当前温度为：
-						<h4 style="color: red;">${device.tempData}°C</h4>
+						<h4 id="tempWarn" style="color: green;">${device.tempData}°C</h4>
 						</p>
 						<p>水中的鱼儿依靠皮肤感觉器感觉环境温度的变动，保持恒定水温对水族箱来说至关重要。</p>
 						<p>
@@ -120,12 +120,10 @@
 						</p>
 					</div>
 					<!--/.col-xs-6.col-lg-4-->
-
 				</div>
 				<!--/row-->
 			</div>
 			<!--/.col-xs-12.col-sm-9-->
-
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
 				<!--小屏幕下是隐藏此部分的-->
 				<div class="userHeadDiv">
@@ -165,7 +163,6 @@
 	<script type="text/javascript">
 	$(document).ready(
 			function() {
-				
 				var ph=Number('${device.phData}');
 				var tds=Number('${device.tdsData}');
 				var temp=Number('${device.tempData}');
@@ -175,14 +172,23 @@
 				var tdsMin=Number('${sessionScope.dw.tdsMin}');
 				var tempMax=Number('${sessionScope.dw.tempMax}');				
 				var tempMin=Number('${sessionScope.dw.tempMin}');
-				if(ph>phMax||ph<phMin){
-					alert("警告:ph值超出预设范围！");
+				if(phMax!=0||phMin!=0){
+					if(ph>phMax||ph<phMin){
+						alert("警告:ph值超出预设范围！");
+						$("#phWarn").css("color","red");
+					}	
 				}
-				if(tds>tdsMax||tds<tdsMin){
-					alert("警告:tds值超出预设范围！");
+				if(tdsMax!=0||tdsMin!=0){
+					if(tds>tdsMax||tds<tdsMin){
+						alert("警告:tds值超出预设范围！");
+						$("#tdsWarn").css("color","red");
+					}	
 				}
-				if(temp>tempMax||temp<tempMin){
-					alert("警告:temp值超出预设范围！");
+				if(tempMax!=0||tempMin!=0){
+					if(temp>tempMax||temp<tempMin){
+						alert("警告:temp值超出预设范围！");
+						$("#tempWarn").css("color","red");
+					}	
 				}
 			});
 	</script>

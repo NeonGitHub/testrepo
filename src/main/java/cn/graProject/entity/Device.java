@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Device {
 
+	private int dataId;
 	//设备ID
 	private String deviceId;
 	//ph数据
@@ -61,6 +62,14 @@ public class Device {
 
 	public void setUploadTime(Date uploadTime) {
 		this.uploadTime = uploadTime;
+	}
+
+	public int getDataId() {
+		return dataId;
+	}
+
+	public void setDataId(int dataId) {
+		this.dataId = dataId;
 	}
 	
 	

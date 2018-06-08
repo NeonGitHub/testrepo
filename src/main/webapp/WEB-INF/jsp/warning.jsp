@@ -75,10 +75,10 @@
 								<span>ph值预警</span>
 							</div>
 							<div class="col-md-2">
-								<input name="phMax" type="text" placeholder="最大值" class="form-control"  value="${dw.phMax}">
+								<input name="phMin" type="text" placeholder="最小值" class="form-control" value="${dw.phMin}">
 							</div>
 							<div class="col-md-2">
-								<input name="phMin" type="text" placeholder="最小值" class="form-control" value="${dw.phMin}">
+								<input name="phMax" type="text" placeholder="最大值" class="form-control"  value="${dw.phMax}">
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -90,10 +90,10 @@
 								<span>tds值预警</span>
 							</div>
 							<div class="col-md-2">
-								<input name="tdsMax" type="text" placeholder="最大值" class="form-control" value="${dw.tdsMax}">
+								<input name="tdsMin" type="text" placeholder="最小值" class="form-control" value="${dw.tdsMin}">
 							</div>
 							<div class="col-md-2">
-								<input name="tdsMin" type="text" placeholder="最小值" class="form-control" value="${dw.tdsMin}">
+								<input name="tdsMax" type="text" placeholder="最大值" class="form-control" value="${dw.tdsMax}">
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -105,10 +105,10 @@
 								<span>温度预警</span>
 							</div>
 							<div class="col-md-2">
-								<input name="tempMax" type="text" placeholder="最大值" class="form-control" value="${dw.tempMax}">
+								<input name="tempMin" type="text" placeholder="最小值" class="form-control" value="${dw.tempMin}">
 							</div>
 							<div class="col-md-2">
-								<input name="tempMin" type="text" placeholder="最小值" class="form-control" value="${dw.tempMin}">
+								<input name="tempMax" type="text" placeholder="最大值" class="form-control" value="${dw.tempMax}">
 							</div>
 						</div>
 						<div class="col-md-12">
