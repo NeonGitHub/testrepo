@@ -46,4 +46,15 @@
 		</property>
 	</bean>
 
+	<!-- 6.拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 拦截全部地址 -->
+			<mvc:mapping path="/**" />
+			<!-- 登录拦截类 -->
+			<bean id="loginInterceptor" class="cn.graProject.web.LoginInterceptor">
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 </beans>

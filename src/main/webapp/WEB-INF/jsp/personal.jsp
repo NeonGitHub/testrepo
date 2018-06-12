@@ -59,7 +59,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="/graProject/caseList?page=1&pageSize=10">查看案例</a></li>
 						<li><a href="/graProject/caseAnalysis">案例分析</a></li>
-						<li><a href="/graProject/addCase">添加案例</a></li>
+						<li><a href="/graProject/caseAdd">添加案例</a></li>
 					</ul></li>
 			</ul>
 		</div>
@@ -81,7 +81,7 @@
 				<script src="/graProject/js/history.js"></script>
 				</div>
 
-				<h3>数据上传时间:<fmt:formatDate value="${device.uploadTime}" pattern="yyyy-MM-dd HH:mm:ss" /> </h3>
+				<h3 id="newTime">数据上传时间:<fmt:formatDate value="${device.uploadTime}" pattern="yyyy-MM-dd HH:mm:ss" /> </h3>
 				<div class="row">
 					<div class="col-xs-6 col-lg-4">
 						<h2>PH值</h2>
@@ -98,7 +98,7 @@
 					<div class="col-xs-6 col-lg-4">
 						<h2>TDS值</h2>
 						<p>您的水族箱当前TDS值为：
-						<h4 id="tdWarn" style="color: green;">${device.tdsData}mg/L</h4>
+						<h4 id="tdsWarn" style="color: green;">${device.tdsData}mg/L</h4>
 						</p>
 						<p>总溶解固体（Total dissolved
 							solids）,测量单位为毫克/升（mg/L）,它表明1升水中溶有多少毫克溶解性固体。</p>
@@ -176,21 +176,103 @@
 					if(ph>phMax||ph<phMin){
 						alert("警告:ph值超出预设范围！");
 						$("#phWarn").css("color","red");
+					}else{
+						$("#phWarn").css("color","green");
 					}	
 				}
 				if(tdsMax!=0||tdsMin!=0){
 					if(tds>tdsMax||tds<tdsMin){
 						alert("警告:tds值超出预设范围！");
 						$("#tdsWarn").css("color","red");
+					}else{
+						$("#tdsWarn").css("color","green");
 					}	
 				}
 				if(tempMax!=0||tempMin!=0){
 					if(temp>tempMax||temp<tempMin){
 						alert("警告:temp值超出预设范围！");
 						$("#tempWarn").css("color","red");
-					}	
+					}else{
+						$("#tempWarn").css("color","green");
+					}		
 				}
+				setInterval("startAjax()",10000);
 			});
+		function timestampToTime(timestamp) {
+			var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+			var Y = date.getFullYear() + '-';
+			var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+			var D = (date.getDate() < 10 ? '0'+(date.getDate()) : date.getDate()) + ' ';
+			var h = (date.getHours() < 10 ? '0'+(date.getHours()) : date.getHours()) + ':';
+			var m = (date.getMinutes() < 10 ? '0'+(date.getMinutes()) : date.getMinutes()) + ':'
+			var s = (date.getSeconds() < 10 ? '0'+(date.getSeconds()) : date.getSeconds()) ;
+			return Y+M+D+h+m+s;
+		}
+		function startAjax(){
+		// 异步加载数据
+		$.get('/graProject/history').done(function(data) {
+			  // 填入数据
+			  console.log(data);
+			  console.log(data.newData.phData);
+			    var ph=Number(data.newData.phData);
+				var tds=Number(data.newData.tdsData);
+				var temp=Number(data.newData.tempData);
+				var phMax=Number('${sessionScope.dw.phMax}');
+				var phMin=Number('${sessionScope.dw.phMin}');
+				var tdsMax=Number('${sessionScope.dw.tdsMax}');
+				var tdsMin=Number('${sessionScope.dw.tdsMin}');
+				var tempMax=Number('${sessionScope.dw.tempMax}');				
+				var tempMin=Number('${sessionScope.dw.tempMin}');
+			  $("#phWarn").text(ph.toFixed(2));
+			  $("#tdsWarn").text(tds.toFixed(2)+"mg/L");
+			  $("#tempWarn").text(temp.toFixed(2)+"°C");
+			  $("#newTime").text("数据上传时间:"+timestampToTime(data.newData.uploadTime));
+
+			  if(phMax!=0||phMin!=0){
+					if(Number(data.newData.phData)>phMax||Number(data.newData.phData)<phMin){
+						alert("警告:ph值超出预设范围！");
+						$("#phWarn").css("color","red");
+					}else{
+						$("#phWarn").css("color","green");
+					}		
+				}
+				if(tdsMax!=0||tdsMin!=0){
+					if(Number(data.newData.tdsData)>tdsMax||Number(data.newData.tdsData)<tdsMin){
+						alert("警告:tds值超出预设范围！");
+						$("#tdsWarn").css("color","red");
+					}else{
+						$("#tdsWarn").css("color","green");
+					}		
+				}
+				if(tempMax!=0||tempMin!=0){
+					if(Number(data.newData.tempData)>tempMax||Number(data.newData.tempData)<tempMin){
+						alert("警告:temp值超出预设范围！");
+						$("#tempWarn").css("color","red");
+					}else{
+						$("#tempWarn").css("color","green");
+					}		
+				}
+			  myChart.hideLoading();
+			  myChart.setOption({
+			    xAxis: {
+			      data: data.date
+			    },
+			    series: [{
+			      // 根据名字对应到相应的系列
+			      name: 'ph值',
+			      data: data.ph
+			    }, {
+			      // 根据名字对应到相应的系列
+			      name: 'temp值',
+			      data: data.temp
+			    }, {
+			      // 根据名字对应到相应的系列
+			      name: 'tds值',
+			      data: data.tds
+			    }]
+			  });
+			})
+		}
 	</script>
 	
 </body>

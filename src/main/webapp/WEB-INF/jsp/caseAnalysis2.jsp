@@ -79,8 +79,7 @@
 							<h3 class="panel-title">案例编号<c:out value="${list.treatment.caseId}"/></h3>
 						</div>
 						<div class="panel-body">
-							<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span> <c:out value="${list.treatment.caseAuthor}"/></span> <span
-								class='glyphicon glyphicon-time' aria-hidden="true"></span> <span>2018-05-17</span>
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span> <c:out value="${list.treatment.caseAuthor}"/></span> 
 							<br><br>
 							  <span>疾病相似度:</span><span><c:out value="${list.distance1}"/>%</span>
 							  <br>

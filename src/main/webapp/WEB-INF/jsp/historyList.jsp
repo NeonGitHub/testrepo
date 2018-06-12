@@ -52,9 +52,8 @@
 					<ul class="dropdown-menu">
 						<li><a href="/graProject/caseList?page=1&pageSize=10">查看案例</a></li>
 						<li><a href="/graProject/caseAnalysis">案例分析</a></li>
-						<li><a href="/graProject/addcase">添加案例</a></li>
+						<li><a href="/graProject/caseAdd">添加案例</a></li>
 					</ul></li>
-				<li><a href="newslist.html">通知及资讯</a></li>
 			</ul>
 		</div>
 		<!-- /.nav-collapse -->

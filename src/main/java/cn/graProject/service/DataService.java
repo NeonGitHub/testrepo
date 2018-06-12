@@ -40,6 +40,7 @@ public class DataService {
 	}
 	
 	public Map<String,Object> findAllData(String deviceId) {
+		Device deviceOneData=dataDao.queryNewDataById(deviceId);
 		List<Device> list=dataDao.queryAllDataById(deviceId);
 		List<Double> ph=new ArrayList<Double>();
 		List<Double> tds=new ArrayList<Double>();
@@ -57,6 +58,7 @@ public class DataService {
 		map.put("tds", tds);
 		map.put("temp", temp);
 		map.put("date", date);
+		map.put("newData", deviceOneData);
 		return map;
 	}
 

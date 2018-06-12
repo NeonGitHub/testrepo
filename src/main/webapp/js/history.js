@@ -46,11 +46,10 @@
 						    data: [],
 						  }]
 						};
-
 						myChart.showLoading();
 						myChart.setOption(option);
 						// 异步加载数据
-						$.get('/graProject/history').done(function(data) {
+						/*$.get('/graProject/history').done(function(data) {
 						  // 填入数据
 						  console.log(data);
 						  myChart.hideLoading();
@@ -72,4 +71,4 @@
 						      data: data.tds
 						    }]
 						  });
-						});
+						});*/

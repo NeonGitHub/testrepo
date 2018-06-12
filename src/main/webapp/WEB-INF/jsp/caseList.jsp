@@ -53,9 +53,6 @@
 							<li><a href="/graProject/caseAdd">添加案例</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="newslist">通知及资讯</a>
-					</li>
 				</ul>
 			</div>
 			<!-- /.nav-collapse -->
