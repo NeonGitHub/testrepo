@@ -145,17 +145,4 @@ insert into behave(behave_id,behave_desc,behave_part,behave_value) values("H01",
 --插入鱼种数据
 insert into fish_type(fish_name)
 values("金鱼"),("银龙鱼"),("鹦鹉鱼"),("锦鲤"),("印尼虎鱼"),("孔雀鱼");
---插入治愈案例
-insert into treatment_case(case_author,fish_name,ph_data,tds_data,temp_data,disease_id,disease_name,treatment)
-values("老张","金鱼",7.01,1.44,21,1,"白头白嘴病","多喝热水，多喝热水，多喝热水"),
-("老张","银龙鱼",7.02,2.44,21,2,"白头白嘴病2","多喝热水，多喝热水，多喝热水"),
-("老张","鹦鹉鱼",7.03,3.44,21,3,"白头白嘴病3","多喝热水，多喝热水，多喝热水"),
-("老张","锦鲤",7.04,4.44,21,4,"白头白嘴病4","多喝热水，多喝热水，多喝热水"),
-("老张","孔雀鱼",7.05,5.44,21,5,"白头白嘴病5","多喝热水，多喝热水，多喝热水");
---插入疾病案例
-insert into disease_case(disease_name,disease_show,disease_reason)
-values("白头白嘴病","头部嘴部发白","熬夜太多，不爱运动。"),
-("白头白嘴病2","头部嘴部发白2","熬夜太多，不爱运动。"),
-("白头白嘴病3","头部嘴部发白3","熬夜太多，不爱运动。"),
-("白头白嘴病4","头部嘴部发白4","熬夜太多，不爱运动。"),
-("白头白嘴病5","头部嘴部发白5","熬夜太多，不爱运动。");
+
