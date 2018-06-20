@@ -102,10 +102,10 @@
 								<input type="text" name="phData" placeholder="ph值" class="form-control">
 							</div>
 							<div class="col-md-2">
-								<input type="text" name="tdsData" placeholder="tds值" class="form-control">
+								<input type="text" name="tdsData" placeholder="tds值(mg/l)" class="form-control">
 							</div>
 							<div class="col-md-2">
-								<input type="text" name="tempData" placeholder="温度值" class="form-control">
+								<input type="text" name="tempData" placeholder="温度值(℃)" class="form-control">
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -212,8 +212,8 @@
 				<div class="list-group">
 					<a href="/graProject/persional/${sessionScope.user.userId}" class="list-group-item text-center">个人主页</a>
 					<a href="/graProject/historyList?page=1&pageSize=30" class="list-group-item text-center">历史数据</a>
-					<a href="/graProject/caseAnalysis" class="list-group-item text-center">案例分析</a>
 					<a href="/graProject/caseList?page=1&pageSize=10" class="list-group-item text-center">查看案例</a>
+					<a href="/graProject/caseAnalysis" class="list-group-item text-center">案例分析</a>
 					<a href="/graProject/caseAdd" class="list-group-item text-center active">添加案例</a>
 				</div>
 			</div>

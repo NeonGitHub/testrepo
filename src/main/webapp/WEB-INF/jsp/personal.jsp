@@ -79,6 +79,31 @@
 				</p>
 				<div style="width: 100%; height: 300px;" id="main">
 				<script src="/graProject/js/history.js"></script>
+				<script  type="text/javascript">
+				$.get('/graProject/history').done(function(data) {
+						  // 填入数据
+						  console.log(data);
+						  myChart.hideLoading();
+						  myChart.setOption({
+						    xAxis: {
+						      data: data.date
+						    },
+						    series: [{
+						      // 根据名字对应到相应的系列
+						      name: 'ph值',
+						      data: data.ph
+						    }, {
+						      // 根据名字对应到相应的系列
+						      name: 'temp值',
+						      data: data.temp
+						    }, {
+						      // 根据名字对应到相应的系列
+						      name: 'tds值',
+						      data: data.tds
+						    }]
+						  });
+						});
+				</script>
 				</div>
 
 				<h3 id="newTime">数据上传时间:<fmt:formatDate value="${device.uploadTime}" pattern="yyyy-MM-dd HH:mm:ss" /> </h3>

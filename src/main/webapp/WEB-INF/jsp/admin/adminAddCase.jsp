@@ -132,10 +132,10 @@
 								<input type="text" name="phData" placeholder="ph值" class="form-control">
 							</div>
 							<div class="col-md-2">
-								<input type="text" name="tdsData" placeholder="tds值" class="form-control">
+								<input type="text" name="tdsData" placeholder="tds值(mg/l)" class="form-control">
 							</div>
 							<div class="col-md-2">
-								<input type="text" name="tempData" placeholder="温度值" class="form-control">
+								<input type="text" name="tempData" placeholder="温度值(℃)" class="form-control">
 							</div>
 						</div>
 						<div class="col-md-12">

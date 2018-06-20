@@ -78,22 +78,6 @@
 					</ul>
 				</div>
 
-				<div class="row">
-					<div class="col-md-6 col-md-offset-6">
-						<form action="caseList.html">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="标题查找...">
-							<span class="input-group-btn"><button class="btn btn-default" type="submit">查找</button></span>
-						</div>
-					</form>
-					</div>
-					<br>
-					<div class="col-md-12">
-						<br>
-					</div>
-				</div>
-				
-				
 				
 				<c:forEach items="${treatmentCaseList}" var="treatmentCase">
 				<a class="myAlabel" href="caseInfo/${treatmentCase.caseId}/diseaseId/${treatmentCase.diseaseId}">

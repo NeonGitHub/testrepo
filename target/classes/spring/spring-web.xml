@@ -20,6 +20,7 @@
 	<!--2.静态资源默认servlet配置 -->
 	<!--1).加入对静态资源处理：js,gif,png 2).允许使用 "/" 做整体映射 -->
 	<mvc:default-servlet-handler />
+	
 
 	<!--3：配置JSP 显示ViewResolver应该是视图解析器 -->
 	<bean
@@ -46,15 +47,6 @@
 		</property>
 	</bean>
 
-	<!-- 6.拦截器 -->
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<!-- 拦截全部地址 -->
-			<mvc:mapping path="/**" />
-			<!-- 登录拦截类 -->
-			<bean id="loginInterceptor" class="cn.graProject.web.LoginInterceptor">
-			</bean>
-		</mvc:interceptor>
-	</mvc:interceptors>
+
 
 </beans>
