@@ -54,20 +54,6 @@ CREATE TABLE disease_desc(
 key idx_disease(disease_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='疾病特征表';
 
-CREATE TABLE disease_num(
-`disease_id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '数据记录自增主键',
-`disease_name` varchar(10) NOT NULL COMMENT '疾病名称',
-`character_a` int COMMENT '体表量化值',
-`character_b` int COMMENT '头部量化值',
-`character_c` int COMMENT '腮部量化值',
-`character_d` int COMMENT '腹部量化值',
-`character_e` int COMMENT '鳞片量化值',
-`character_f` int COMMENT '鱼鳍量化值',
-`character_g` int COMMENT '肌肉量化值',
-`character_h` int COMMENT '肠道量化值',
-PRIMARY KEY (disease_id),
-key idx_disease(disease_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='疾病量化表';
 
 CREATE TABLE disease_weight(
 `weight_id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '数据记录自增主键',
@@ -83,7 +69,7 @@ CREATE TABLE disease_weight(
 `weight_h` double COMMENT '肠道特征值权值',
  PRIMARY KEY (weight_id),
 key idx_weight(weight_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='疾病特征权值表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='疾病特征权值表暂时没用';
 
 CREATE TABLE treatment_case(
 `case_id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '数据记录自增主键',
